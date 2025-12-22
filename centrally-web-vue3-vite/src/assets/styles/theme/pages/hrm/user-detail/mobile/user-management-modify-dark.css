@@ -1,0 +1,23 @@
+/* ═══════════════════════════════════════════════════════════════
+ * UserManagementModifyMobile - Dark Mode
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .form-pane {
+  background-color: var(--theme-body-bg) !important;
+}
+
+body[data-theme="dark"] .form-group {
+  background: transparent !important;
+  border: none !important;
+}
+
+body[data-theme="dark"] .avatar-placeholder-80 {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .profile-meta {
+  color: var(--theme-text-primary) !important;
+}
+

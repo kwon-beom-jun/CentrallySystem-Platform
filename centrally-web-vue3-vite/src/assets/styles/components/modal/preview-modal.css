@@ -1,0 +1,50 @@
+.preview-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+}
+
+.preview-modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  height: 80vh;
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer; /* 클릭 가능하게 포인터 변경 */
+}
+
+.preview-modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease; /* 확대 애니메이션 */
+  cursor: pointer;
+  will-change: transform; /* 브라우저에 변화를 미리 알림 */
+}
+
+.preview-modal-image.zoomed {
+  cursor: grab; /* 확대 상태일 때 커서 모양 변경 */
+}
+
+.preview-modal .close {
+  position: absolute;
+  top: -50px;
+  right: -30px;
+  font-size: 40px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}

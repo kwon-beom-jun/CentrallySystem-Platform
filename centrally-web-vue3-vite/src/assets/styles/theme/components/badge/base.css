@@ -1,0 +1,9 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 뱃지 기본 스타일 (Badge Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.badge {
+  background-color: var(--theme-chip-bg) !important;
+  color: var(--theme-chip-text) !important;
+}
+

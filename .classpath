@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="centrally-system-auth/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-auth/src/test/java"/>
+	<classpathentry kind="src" path="centrally-system-config/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-config/src/test/java"/>
+	<classpathentry kind="src" path="centrally-system-core/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-core/src/test/java"/>
+	<classpathentry kind="src" path="centrally-system-eureka/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-eureka/src/test/java"/>
+	<classpathentry excluding="com/cs/gateway/log/" kind="src" path="centrally-system-gateway/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-gateway/src/main/java/com/cs/gateway/log"/>
+	<classpathentry kind="src" path="centrally-system-gateway/src/test/java"/>
+	<classpathentry kind="src" path="centrally-system-hrm/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-hrm/src/test/java"/>
+	<classpathentry kind="src" path="centrally-system-receipt/src/main/java"/>
+	<classpathentry kind="src" path="centrally-system-receipt/src/test/java"/>
+	<classpathentry kind="src" path="centrally-web-vue/android/app/src/androidTest/java"/>
+	<classpathentry kind="src" path="centrally-web-vue/android/app/src/main/java"/>
+	<classpathentry kind="src" path="centrally-web-vue/android/app/src/test/java"/>
+	<classpathentry kind="lib" path="centrally-system-auth/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-system-config/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-system-core/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-system-eureka/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-system-gateway/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-system-hrm/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-system-receipt/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="centrally-web-vue/android/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 드롭다운 다크모드 오버라이드 (Dropdown Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .v-select {
+  background-color: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .v-list {
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .v-list-item {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .v-list-item:hover {
+  background-color: var(--theme-bg-tertiary) !important;
+}
+
+body[data-theme="dark"] .v-list-item-title {
+  color: var(--theme-text-primary) !important;
+}
+

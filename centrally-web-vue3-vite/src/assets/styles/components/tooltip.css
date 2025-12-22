@@ -1,0 +1,49 @@
+/**
+ * floating-vue의 기본 'tooltip' 테마를 직접 덮어씁니다.
+ * body를 선택자 앞에 추가하여 기본 스타일보다 우선순위를 높입니다.
+ */
+body .v-popper--theme-tooltip .v-popper__inner {
+  background: #212529; /* 배경: 어두운 회색 */
+  color: white;
+  border-radius: 6px; /* 둥근 사각형 */
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* 기본 테마의 말풍선 꼬리를 숨겨서 깔끔한 사각형으로 만듭니다. */
+body .v-popper--theme-tooltip .v-popper__arrow-container {
+  display: none;
+}
+
+/* -------------------------------------------------- */
+/* Tooltip animation speed                              */
+/* -------------------------------------------------- */
+/*
+   floating-vue 기본 스타일에서는 툴팁이 opacity 0 → 1 로 150ms 동안
+   서서히 나타나도록 정의되어 있습니다. 아래 규칙으로 transition 시간을
+   50ms 로 단축하여 사용자가 마우스를 올렸을 때 더 빠르게 표시되도록
+   오버라이드합니다.
+*/
+body .v-popper__popper.v-popper__popper--hidden,
+body .v-popper__popper.v-popper__popper--shown {
+  transition: opacity 150ms ease, visibility 150ms ease !important;
+}
+
+/* 모바일(<=650px)에서 툴팁 폰트 크기/패딩 축소 */
+@media (max-width: 650px) {
+  /* 테마 상관없이 모든 팝퍼 인너에 적용 */
+  html body .v-popper__inner,
+  html body .v-popper__content,
+  html body .v-popper__inner *,
+  html body .v-popper__content * {
+    font-size: 0.62rem !important;
+    line-height: 1.25 !important;
+  }
+  html body .v-popper__inner,
+  html body .v-popper__content {
+    padding: 6px 10px !important;
+  }
+}

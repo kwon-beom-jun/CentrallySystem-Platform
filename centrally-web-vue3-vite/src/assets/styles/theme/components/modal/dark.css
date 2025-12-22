@@ -1,0 +1,66 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 모달 다크모드 오버라이드 (Modal Dark Mode Overrides)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .modal-header {
+  background: linear-gradient(135deg, #737986 0%, #5D6572 100%) !important;
+  color: #f1f5f9 !important;
+  border-bottom: 1px solid #475569 !important;
+}
+
+body[data-theme="dark"] .modal-title {
+  color: #f1f5f9 !important;
+}
+
+/* 밝은모드: 모달 헤더 글자 흰색 */
+body[data-theme="light"] .modal-header,
+body[data-theme="light"] .modal-title {
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .modern-modal-container {
+  background: var(--theme-bg-main) !important;
+}
+
+body[data-theme="dark"] .modal-header-custom {
+  background: linear-gradient(135deg, #475569 0%, #334155 100%) !important;
+  color: #ffffff !important;
+}
+
+/* CompanyInfoModal info-value */
+body[data-theme="dark"] .company-info-section .info-value {
+  background-color: var(--theme-modal-bg) !important;
+}
+
+/* EditModal 버튼 */
+body[data-theme="dark"] .custom-modal-pop-up-footer .btn-primary {
+  background: var(--theme-btn-primary-bg) !important;
+  color: #ffffff !important;
+  border-color: var(--theme-btn-primary-bg) !important;
+}
+
+body[data-theme="dark"] .custom-modal-pop-up-footer .btn-secondary {
+  background: var(--theme-btn-gray-bg) !important;
+  color: #ffffff !important;
+  border-color: var(--theme-btn-gray-bg) !important;
+}
+
+/* CardStyleSelectorModal preview-wrapper */
+body[data-theme="dark"] .preview-wrapper {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .style-option {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .style-option.active {
+  border-color: var(--theme-btn-primary-bg) !important;
+}
+
+body[data-theme="dark"] .style-label {
+  /* color: var(--theme-text-primary) !important; */
+}
+

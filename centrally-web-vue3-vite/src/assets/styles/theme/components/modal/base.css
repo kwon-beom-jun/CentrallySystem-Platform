@@ -1,0 +1,60 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 모달 기본 스타일 (Modal Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.custom-modal-pop-up {
+  background-color: var(--theme-modal-overlay) !important;
+}
+
+.custom-modal-pop-up-content,
+.custom-modal-pop-up-dialog,
+.modal-content {
+  color: var(--theme-text-primary) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+}
+
+.custom-modal-pop-up-title,
+.modal-header {
+  color: var(--theme-text-primary) !important;
+  /* background-color: var(--theme-modal-bg) !important; */
+  /* border-top-left-radius: 8px !important; */
+  /* border-top-right-radius: 8px !important; */
+}
+
+.custom-modal-pop-up-body,
+.modal-body {
+  background-color: var(--theme-modal-bg) !important;
+  color: var(--theme-text-secondary) !important;
+  border-color: var(--theme-modal-border) !important;
+}
+
+/* footer가 없는 모달의 경우 body 하단도 둥글게 */
+.modal-content:not(:has(.modal-footer)) .modal-body {
+  /* border-bottom-left-radius: 8px !important; */
+  /* border-bottom-right-radius: 8px !important; */
+}
+
+.modal-footer {
+  background-color: var(--theme-modal-bg) !important;
+  color: var(--theme-text-secondary) !important;
+  border-color: var(--theme-modal-border) !important;
+  /* border-bottom-left-radius: 8px !important; */
+  /* border-bottom-right-radius: 8px !important; */
+}
+
+/* 이미지 확대 모달은 투명 배경 유지 */
+.image-zoom-dialog .modal-body {
+  background-color: #ffffff00 !important;
+}
+
+.modal-body p,
+.modal-body span,
+.modal-body div,
+.custom-modal-pop-up-body p,
+.custom-modal-pop-up-body span,
+.custom-modal-pop-up-body div {
+  color: var(--theme-text-secondary) !important;
+}
+

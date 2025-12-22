@@ -1,0 +1,12 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 네비게이션 기본 스타일 (Navigation Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.navbar,
+.header,
+nav {
+  background-color: var(--theme-header-bg) !important;
+  border-color: var(--theme-header-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+

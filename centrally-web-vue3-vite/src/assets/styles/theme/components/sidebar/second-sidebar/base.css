@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════════════════════
+ * SecondSidebar 기본 스타일 (Second Sidebar Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 밝은모드: SecondSidebar 카테고리/메뉴 글자색 및 아이콘 */
+body[data-theme="light"] .category-header {
+  color: #4a5568 !important;
+}
+
+body[data-theme="light"] .category-header i:first-child {
+  color: #4a5568 !important;
+}
+
+body[data-theme="light"] .sub-nav-link {
+  color: #4a5568 !important;
+}
+
+body[data-theme="light"] .sub-nav-link > i:first-child {
+  color: #718096 !important;
+}
+
+body[data-theme="light"] .sub-nav-link:hover {
+  color: #1a202c !important;
+}
+
+body[data-theme="light"] .sub-nav-link:hover > i:first-child {
+  color: #4a5568 !important;
+}
+
+.second-sidebar {
+  background-color: var(--theme-sidebar-bg) !important;
+  border-color: var(--theme-sidebar-border) !important;
+}
+
+.second-sidebar,
+.second-sidebar .category-header,
+.second-sidebar .sub-nav-link {
+  color: var(--theme-text-primary) !important;
+}
+
+/* 카테고리 메뉴 (SecondSidebar 내부만) */
+.second-sidebar .category-menu,
+.second-sidebar .submenu,
+.second-sidebar .dropdown-content {
+  background-color: var(--theme-submenu-bg) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+.second-sidebar .category-item,
+.second-sidebar .submenu-item {
+  color: var(--theme-text-primary) !important;
+}
+
+.second-sidebar .category-item:hover,
+.second-sidebar .submenu-item:hover {
+  background-color: var(--theme-sidebar-item-hover) !important;
+}
+
+/* 서브 메뉴 (SecondSidebar 내부만) */
+.second-sidebar .sub-menu {
+  background-color: var(--theme-submenu-bg) !important;
+  color: var(--theme-text-primary) !important;
+}
+

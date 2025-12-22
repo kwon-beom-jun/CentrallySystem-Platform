@@ -1,0 +1,22 @@
+# 함수 작성 규칙
+- 모든 함수 위에는 JSDoc 스타일 주석을 작성한다.
+  /**
+   * 함수 설명 (한글/영문 가능)
+   */
+
+# 체인 규칙
+- 함수 체인 호출이 3단계 이상일 경우 줄바꿈하여 라인을 맞춘다.
+  예시)
+  userService.findUser()
+             .map()
+             .filter();
+
+# 플로우 분석 목적
+- 본 프로젝트에서 Cursor는 **프론트(Vue3 + Vite)**와 **백엔드(Spring Boot 3.2.x, Java 17)**의 실행 흐름을 Function 단위로 분석한다.
+- **시각화(SVG, Mermaid 등), 표, 메타데이터(파라미터/리턴타입 등)**는 모두 금지한다.
+- 출력은 **텍스트 기반 흐름 요약**만 포함하며, **토큰 비용 절감**을 최우선으로 한다.
+
+# 환경
+- Frontend: Vue 3, Vite, Vue Router, BootstrapVue3, Vuetify, Axios (TypeScript 미사용)
+- Backend: Java 17, Spring Boot 3.2.x, Spring JPA, Spring Security, Spring Cloud 2023.0.0, Kafka, PostgreSQL
+- 공통 키워드 힌트: onMounted, created, @click, submit, axios, await, router.push, @GetMapping, @PostMapping, Service, Repository, @Transactional

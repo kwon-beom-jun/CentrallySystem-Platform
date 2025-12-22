@@ -1,0 +1,80 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.9'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.centrally.gateway'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.0"
+    }
+}
+
+dependencies {
+
+	// core 모듈 의존성 추가
+	// implementation project(':centrally-system-core')
+	// implementation files('lib/centrally-system-core-0.0.1-SNAPSHOT.jar') // ✅ 수동 추가
+
+    // WebFlux 기반의 Gateway이므로 spring-boot-starter-web 대신 webflux 사용
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    
+    // R2DBC
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'org.postgresql:r2dbc-postgresql'
+    
+    // OAuth2 클라이언트 및 보안 (리액티브 환경에서 동작)
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation("org.springframework.security:spring-security-oauth2-resource-server") // OAuth2 Resource Server
+    implementation("org.springframework.security:spring-security-oauth2-jose") // JWT 서명 및 검증
+
+    // JWT 관련 라이브러리가 필요하다면 추가 (예: jjwt)
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 파싱을 위한 Jackson 지원 추가
+
+    
+    // Lombok (선택 사항)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    
+    // postgresql (Tomcat + JPA등 의존되는것 있어서 webflux와 충돌)
+    // runtimeOnly("org.postgresql:r2dbc-postgresql") // PostgreSQL R2DBC (선택)
+
+    // Spring Cloud Gateway 의존성
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+    
+    // Spring Cloud Config Client 의존성
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    
+    // Eureka Client 의존성
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    
+    // 테스트 관련 의존성 (필요에 따라 추가)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    
+    // Spring Boot Actuator: 모니터링 및 관리 엔드포인트 제공 (WebFlux 지원)
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    
+    // Micrometer Prometheus: Prometheus 형식의 메트릭 노출
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

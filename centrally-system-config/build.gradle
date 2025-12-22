@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.9'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.centrally.config'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.0"
+    }
+}
+
+dependencies {
+    // Spring Boot 웹 애플리케이션을 위한 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // Spring Cloud Config Server 의존성
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+    
+    // 모니터링을 위한 Spring Boot Actuator 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+

@@ -1,0 +1,237 @@
+/* ===== 즐겨찾기 메뉴 공통 스타일 ===== */
+
+/* 색상별 칩/카드 배경 스타일 - 파스텔톤 */
+.favorite-item.color-blue,
+.chip-color-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08) !important;
+  border-color: #bfdbfe !important;
+}
+
+.favorite-item.color-blue .menu-icon,
+.chip-color-blue .chip-icon {
+  color: #2563eb !important;
+}
+
+.favorite-item.color-blue .menu-label,
+.chip-color-blue .chip-label {
+  color: #1e40af !important;
+}
+
+.favorite-item.color-blue .menu-category,
+.chip-color-blue .chip-category {
+  color: #3b82f6 !important;
+}
+
+.favorite-item.color-purple,
+.chip-color-purple {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%) !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.08) !important;
+  border-color: #ddd6fe !important;
+}
+
+.favorite-item.color-purple .menu-icon,
+.chip-color-purple .chip-icon {
+  color: #8b5cf6 !important;
+}
+
+.favorite-item.color-purple .menu-label,
+.chip-color-purple .chip-label {
+  color: #7c3aed !important;
+}
+
+.favorite-item.color-purple .menu-category,
+.chip-color-purple .chip-category {
+  color: #a78bfa !important;
+}
+
+.favorite-item.color-pink,
+.chip-color-pink {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%) !important;
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.08) !important;
+  border-color: #fbcfe8 !important;
+}
+
+.favorite-item.color-pink .menu-icon,
+.chip-color-pink .chip-icon {
+  color: #ec4899 !important;
+}
+
+.favorite-item.color-pink .menu-label,
+.chip-color-pink .chip-label {
+  color: #db2777 !important;
+}
+
+.favorite-item.color-pink .menu-category,
+.chip-color-pink .chip-category {
+  color: #f472b6 !important;
+}
+
+.favorite-item.color-yellow,
+.chip-color-yellow {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08) !important;
+  border-color: #fde68a !important;
+}
+
+.favorite-item.color-yellow .menu-icon,
+.chip-color-yellow .chip-icon {
+  color: #f59e0b !important;
+}
+
+.favorite-item.color-yellow .menu-label,
+.chip-color-yellow .chip-label {
+  color: #d97706 !important;
+}
+
+.favorite-item.color-yellow .menu-category,
+.chip-color-yellow .chip-category {
+  color: #fbbf24 !important;
+}
+
+.favorite-item.color-green,
+.chip-color-green {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08) !important;
+  border-color: #bbf7d0 !important;
+}
+
+.favorite-item.color-green .menu-icon,
+.chip-color-green .chip-icon {
+  color: #10b981 !important;
+}
+
+.favorite-item.color-green .menu-label,
+.chip-color-green .chip-label {
+  color: #059669 !important;
+}
+
+.favorite-item.color-green .menu-category,
+.chip-color-green .chip-category {
+  color: #34d399 !important;
+}
+
+.favorite-item.color-cyan,
+.chip-color-cyan {
+  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%) !important;
+  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.08) !important;
+  border-color: #99f6e4 !important;
+}
+
+.favorite-item.color-cyan .menu-icon,
+.chip-color-cyan .chip-icon {
+  color: #06b6d4 !important;
+}
+
+.favorite-item.color-cyan .menu-label,
+.chip-color-cyan .chip-label {
+  color: #0891b2 !important;
+}
+
+.favorite-item.color-cyan .menu-category,
+.chip-color-cyan .chip-category {
+  color: #22d3ee !important;
+}
+
+.favorite-item.color-red,
+.chip-color-red {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.08) !important;
+  border-color: #fecaca !important;
+}
+
+.favorite-item.color-red .menu-icon,
+.chip-color-red .chip-icon {
+  color: #ef4444 !important;
+}
+
+.favorite-item.color-red .menu-label,
+.chip-color-red .chip-label {
+  color: #dc2626 !important;
+}
+
+.favorite-item.color-red .menu-category,
+.chip-color-red .chip-category {
+  color: #f87171 !important;
+}
+
+.favorite-item.color-gray,
+.chip-color-gray {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.08) !important;
+  /* border-color: #e2e8f0 !important; */
+  border-color: #d1d6dd !important;
+}
+
+.favorite-item.color-gray .menu-icon,
+.chip-color-gray .chip-icon {
+  color: #64748b !important;
+}
+
+.favorite-item.color-gray .menu-label,
+.chip-color-gray .chip-label {
+  color: #475569 !important;
+}
+
+.favorite-item.color-gray .menu-category,
+.chip-color-gray .chip-category {
+  color: #94a3b8 !important;
+}
+
+/* 세컨더리 사이드바용 물결 밑줄 */
+.favorite-bottom-row.favorite-color-blue {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%2393c5fd' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-purple {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%23c4b5fd' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-pink {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%23f9a8d4' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-yellow {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%23fcd34d' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-green {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%2386efac' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-cyan {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%2367e8f9' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-red {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%23fca5a5' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+
+.favorite-bottom-row.favorite-color-gray {
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 2.5 0, 5 2 T 10 2 T 15 2 T 20 2 T 25 2 T 30 2 T 35 2 T 40 2 T 45 2 T 50 2 T 55 2 T 60 2 T 65 2 T 70 2 T 75 2 T 80 2 T 85 2 T 90 2 T 95 2 T 100 2 T 105 2 T 110 2 T 115 2 T 120 2 T 125 2 T 130 2 T 135 2 T 140 2 T 145 2 T 150 2 T 155 2 T 160 2 T 165 2 T 170 2 T 175 2 T 180 2 T 185 2 T 190 2 T 195 2 T 200 2' stroke='%23cbd5e1' fill='none' stroke-width='3.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 10px 5px;
+}
+

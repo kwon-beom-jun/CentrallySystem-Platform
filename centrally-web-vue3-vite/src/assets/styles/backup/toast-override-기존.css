@@ -1,0 +1,60 @@
+
+
+/* Toast 설정 */
+.Toastify__toast {
+  max-width: 400px !important;
+}
+.Toastify--animate {
+  animation-duration: 0.01s !important;   /* 기본 0.7s → 0.25s */
+}
+@media (max-width: 700px) {
+  /* Toast 설정 */
+  .Toastify__toast {
+    width: 300px !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+@media (max-width: 650px) {
+  /* Toast 설정 */
+  .Toastify__toast {
+    width: 300px !important;
+    font-size: 0.875rem !important;
+    min-height: 50px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Toast 설정 */
+  .Toastify__toast {
+    width: 220px !important;
+    font-size: 0.875rem !important;
+  }
+  /* Toast 설정 아이콘 */
+  .Toastify__toast-icon {
+    width: 10px !important;
+    height: 10px !important;
+  }
+}
+
+/* 480px 이하에서도 동일하게 강제 override */
+/* 480px 이하일때 왼쪽 위로 붙는 현상 수정 */
+@media (max-width: 480px) {
+  .Toastify__toast-container--top-center {
+    position: fixed !important; /* 혹은 absolute, 하지만 보통 fixed가 맞습니다 */
+    top: 0.5rem !important;     /* 원하는 상단 여백 */
+    left: 50% !important;
+    right: auto !important;     /* 혹시 left와 충돌이 있다면 override */
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;     /* 혹시 width가 auto가 아닌 다른 값으로 되어 있을 경우 */
+    /* z-index도 충돌이 나면 최대로 높여주세요 */
+    z-index: 999999 !important;
+  }
+}
+
+
+
+

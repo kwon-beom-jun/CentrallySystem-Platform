@@ -1,0 +1,267 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 테이블 다크모드 오버라이드 (Table Dark Mode Overrides)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 다크모드: 헤더/고정 헤더(Sticky) 영역 배경 및 텍스트 컬러 */
+body[data-theme="dark"] .table thead,
+body[data-theme="dark"] .table thead tr,
+body[data-theme="dark"] .table thead th,
+body[data-theme="dark"] .table thead td,
+body[data-theme="dark"] thead,
+body[data-theme="dark"] thead tr,
+body[data-theme="dark"] thead th,
+body[data-theme="dark"] thead td {
+  background: var(--theme-table-header-bg) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-table-border) !important;
+}
+
+/* Bootstrap sticky-top, position: sticky 헤더용 보강 */
+body[data-theme="dark"] .sticky-top,
+body[data-theme="dark"] .table .sticky-top,
+body[data-theme="dark"] .table thead th.sticky-top,
+body[data-theme="dark"] .table thead td.sticky-top,
+body[data-theme="dark"] th.position-sticky,
+body[data-theme="dark"] td.position-sticky {
+  background: var(--theme-table-header-bg) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-table-border) !important;
+}
+
+/* 다크모드: th/td 보더를 라이트 모드와 동일 구조로 통일 */
+body[data-theme="dark"] .table th,
+body[data-theme="dark"] .table td,
+body[data-theme="dark"] table th,
+body[data-theme="dark"] table td {
+  border-color: var(--theme-table-border) !important;
+}
+
+/* 다크모드: 로우 톤 조정 – 짝수(조금 더 어둡게), 홀수(아주 약간 더 밝게) */
+body[data-theme="dark"] .table tbody tr:nth-child(even),
+body[data-theme="dark"] .table tbody tr:nth-child(even) td,
+body[data-theme="dark"] #dataTable tbody tr:nth-child(even),
+body[data-theme="dark"] #dataTable tbody tr:nth-child(even) td,
+body[data-theme="dark"] table tbody tr:nth-child(even),
+body[data-theme="dark"] table tbody tr:nth-child(even) td,
+body[data-theme="dark"] tbody tr:nth-child(even),
+body[data-theme="dark"] tbody tr:nth-child(even) td {
+  background: linear-gradient(135deg, #2b2b2b 0%, #242424 100%) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .table tbody tr:nth-child(odd),
+body[data-theme="dark"] .table tbody tr:nth-child(odd) td,
+body[data-theme="dark"] #dataTable tbody tr:nth-child(odd),
+body[data-theme="dark"] #dataTable tbody tr:nth-child(odd) td,
+body[data-theme="dark"] table tbody tr:nth-child(odd),
+body[data-theme="dark"] table tbody tr:nth-child(odd) td,
+body[data-theme="dark"] tbody tr:nth-child(odd),
+body[data-theme="dark"] tbody tr:nth-child(odd) td {
+  background: linear-gradient(135deg, #353535 0%, #2b2b2b 100%) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+/* 다크모드: 빈 데이터 영역 */
+body[data-theme="dark"] .no-data-container {
+  background-color: var(--theme-table-bg) !important;
+}
+
+body[data-theme="dark"] .no-results-found {
+  background-color: transparent !important;
+}
+
+/* 다크모드: 고정 행(fixed-row) – 데스크톱 전용 */
+@media (min-width: 651px) {
+  body[data-theme="dark"] .table tbody tr.fixed-row,
+  body[data-theme="dark"] .table tbody tr.fixed-row td {
+    background: linear-gradient(135deg, var(--theme-gray-600) 0%, var(--theme-gray-700) 100%) !important;
+    color: var(--theme-text-primary) !important;
+    border-color: var(--theme-table-border) !important;
+    font-weight: 800 !important;
+  }
+
+  /* 좌측 강조 바 (핀 고정 느낌) */
+  body[data-theme="dark"] .table tbody tr.fixed-row td:first-child {
+    box-shadow: inset 4px 0 0 0 var(--theme-primary) !important;
+  }
+
+  /* 상·하 경계선으로 블록 고정 강조 */
+  body[data-theme="dark"] .table tbody tr.fixed-row td {
+    border-top: 1px solid var(--theme-border-dark) !important;
+    border-bottom: 1px solid var(--theme-border-dark) !important;
+  }
+}
+
+/* 다크모드: 테이블 빈 데이터 행 - 최우선 적용 */
+body[data-theme="dark"] table tbody tr.placeholder-row,
+body[data-theme="dark"] table tbody tr.placeholder-row > td,
+body[data-theme="dark"] table tbody tr.no-data-row,
+body[data-theme="dark"] table tbody tr.no-data-row > td,
+body[data-theme="dark"] .table tbody tr.placeholder-row,
+body[data-theme="dark"] .table tbody tr.placeholder-row > td,
+body[data-theme="dark"] .table tbody tr.no-data-row,
+body[data-theme="dark"] .table tbody tr.no-data-row > td,
+body[data-theme="dark"] tbody tr.placeholder-row,
+body[data-theme="dark"] tbody tr.placeholder-row > td,
+body[data-theme="dark"] tbody tr.no-data-row,
+body[data-theme="dark"] tbody tr.no-data-row > td {
+  background-color: var(--theme-table-bg) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * 다크모드 상태별 색상 클래스 (테이블/카드용)
+ * 짝수 행에서도 적용되도록 더 구체적인 선택자 사용
+ * ═══════════════════════════════════════════════════════════════ */
+/* 승인 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-success,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-success,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-success,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-success,
+body[data-theme="dark"] .table tbody td.text-success,
+body[data-theme="dark"] table tbody td.text-success,
+body[data-theme="dark"] tbody td.text-success,
+body[data-theme="dark"] td .text-success,
+body[data-theme="dark"] span.text-success,
+body[data-theme="dark"] .text-success {
+  color: #22c55e !important;
+}
+
+/* 반려 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-danger,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-danger,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-danger,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-danger,
+body[data-theme="dark"] .table tbody td.text-danger,
+body[data-theme="dark"] table tbody td.text-danger,
+body[data-theme="dark"] tbody td.text-danger,
+body[data-theme="dark"] td .text-danger,
+body[data-theme="dark"] span.text-danger,
+body[data-theme="dark"] .text-danger {
+  color: #ef4444 !important;
+}
+
+/* 신청 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-primary,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-primary,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-primary,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-primary,
+body[data-theme="dark"] .table tbody td.text-primary,
+body[data-theme="dark"] table tbody td.text-primary,
+body[data-theme="dark"] tbody td.text-primary,
+body[data-theme="dark"] td .text-primary,
+body[data-theme="dark"] span.text-primary,
+body[data-theme="dark"] .text-primary {
+  color: #3b82f6 !important;
+}
+
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-blue,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-blue,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-blue,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-blue,
+body[data-theme="dark"] .table tbody td.text-blue,
+body[data-theme="dark"] table tbody td.text-blue,
+body[data-theme="dark"] tbody td.text-blue,
+body[data-theme="dark"] td .text-blue,
+body[data-theme="dark"] span.text-blue,
+body[data-theme="dark"] .text-blue {
+  color: #3b82f6 !important;
+}
+
+/* 대기/회색 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-gray,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-gray,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-gray,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-gray,
+body[data-theme="dark"] .table tbody td.text-gray,
+body[data-theme="dark"] table tbody td.text-gray,
+body[data-theme="dark"] tbody td.text-gray,
+body[data-theme="dark"] td .text-gray,
+body[data-theme="dark"] span.text-gray,
+body[data-theme="dark"] .text-gray {
+  color: #9ca3af !important;
+}
+
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-secondary,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-secondary,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-secondary,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-secondary,
+body[data-theme="dark"] .table tbody td.text-secondary,
+body[data-theme="dark"] table tbody td.text-secondary,
+body[data-theme="dark"] tbody td.text-secondary,
+body[data-theme="dark"] td .text-secondary,
+body[data-theme="dark"] span.text-secondary,
+body[data-theme="dark"] .text-secondary {
+  color: #9ca3af !important;
+}
+
+/* 녹색 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-green,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-green,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-green,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-green,
+body[data-theme="dark"] .table tbody td.text-green,
+body[data-theme="dark"] table tbody td.text-green,
+body[data-theme="dark"] tbody td.text-green,
+body[data-theme="dark"] td .text-green,
+body[data-theme="dark"] span.text-green,
+body[data-theme="dark"] .text-green {
+  color: #22c55e !important;
+}
+
+/* 빨강 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-red,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-red,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-red,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-red,
+body[data-theme="dark"] .table tbody td.text-red,
+body[data-theme="dark"] table tbody td.text-red,
+body[data-theme="dark"] tbody td.text-red,
+body[data-theme="dark"] td .text-red,
+body[data-theme="dark"] span.text-red,
+body[data-theme="dark"] .text-red {
+  color: #ef4444 !important;
+}
+
+/* 경고 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-warning,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-warning,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-warning,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-warning,
+body[data-theme="dark"] .table tbody td.text-warning,
+body[data-theme="dark"] table tbody td.text-warning,
+body[data-theme="dark"] tbody td.text-warning,
+body[data-theme="dark"] td .text-warning,
+body[data-theme="dark"] span.text-warning,
+body[data-theme="dark"] .text-warning {
+  color: #f59e0b !important;
+}
+
+/* 정보 */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-info,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-info,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-info,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-info,
+body[data-theme="dark"] .table tbody td.text-info,
+body[data-theme="dark"] table tbody td.text-info,
+body[data-theme="dark"] tbody td.text-info,
+body[data-theme="dark"] td .text-info,
+body[data-theme="dark"] span.text-info,
+body[data-theme="dark"] .text-info {
+  color: #06b6d4 !important;
+}
+
+/* 어두운 색 (마감) */
+body[data-theme="dark"] .table tbody tr:nth-child(even) > td.text-dark,
+body[data-theme="dark"] .table tbody tr:nth-child(odd) > td.text-dark,
+body[data-theme="dark"] table tbody tr:nth-child(even) > td.text-dark,
+body[data-theme="dark"] table tbody tr:nth-child(odd) > td.text-dark,
+body[data-theme="dark"] .table tbody td.text-dark,
+body[data-theme="dark"] table tbody td.text-dark,
+body[data-theme="dark"] tbody td.text-dark,
+body[data-theme="dark"] td .text-dark,
+body[data-theme="dark"] span.text-dark,
+body[data-theme="dark"] .text-dark {
+  color: #d1d5db !important;
+}
+

@@ -1,0 +1,82 @@
+/* ──────────────────────────────────────────────
+ * ✨ 블로그 목록 스타일 (수정)
+────────────────────────────────────────────── */
+
+@media (max-width: 650px) {
+  /* 0. 기본 설정 */
+  .card-enabled { overflow-x: visible !important; }
+  .card-enabled .table thead { display: none; }
+  .card-enabled .table, .card-enabled .table * { 
+    /* 기존 border 속성 초기화 */
+    border: none !important; 
+  }
+
+  /* 모바일 카드 모드: 테이블 배경을 컨텐츠 배경색으로 */
+  .card-main.card-enabled .table,
+  .card-main.card-enabled .table tbody {
+    background: var(--theme-body-bg) !important;
+  }
+
+  /* tr = 블로그 글처럼 생긴 카드 */
+  .card-main.card-enabled .table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 15px 15px 15px 15px;
+    position: relative;
+    
+    /* 스타일 수정: 글래스모피즘 제거, 상단 구분선 추가 */
+    background-color: var(--theme-card-bg);
+    border-bottom: 1px solid var(--theme-border) !important;
+    transition: background-color 0.15s ease;
+  }
+  
+  /* 마지막 카드에는 하단 구분선도 추가하여 목록 전체를 감싸는 느낌 부여 */
+  .card-main.card-enabled .table tbody tr:last-child {
+    /* border-bottom: 1px solid #f0f0f0; */
+  }
+  .card-main.card-enabled .table tbody tr:hover {
+    transform: scale(1.005) !important;
+    background-color: var(--theme-bg-hover);
+  }
+  /** 
+   * 기존의 td 호버 효과는 비활성화하여 중복 방지
+   * (DefaultTable의 기본 스타일을 덮어쓰기 위해 필요)
+   */
+  .card-main.card-enabled .table tbody tr:hover td {
+    background-color: transparent !important;
+  }
+
+  /* 내부 셀(라인) 레이아웃 */
+  .card-main.card-enabled .table tbody td {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    padding: 2px 0;
+    font-size: 0.78rem;
+    /* white-space: normal !important; */
+    background-color: transparent !important;
+    color: var(--theme-text-primary);
+  }
+  .card-main.card-enabled .table tbody td.mobile-inline {
+    width: auto !important; display: inline-flex; align-items: center;
+    margin-right: 8px;
+  }
+
+  /* 비활성화 상태 */
+  .card-main.card-enabled .table tbody tr.disabled-row {
+    background-color: #f7f7f7;
+    opacity: 0.6;
+  }
+  .card-main.card-enabled .table tbody tr.disabled-row:hover {
+    background-color: #f7f7f7; /* 호버 효과 없음 */
+  }
+  
+  /* 체크박스 위치 보정 */
+  .card-main.card-enabled .table tbody tr:has(> .mobile-checkbox) {
+    padding-left: 48px;
+  }
+  .card-main.card-enabled .table tbody td.mobile-checkbox {
+    position: absolute; left: 16px; top: 16px;
+    width: auto !important; padding: 0 !important;
+  }
+}

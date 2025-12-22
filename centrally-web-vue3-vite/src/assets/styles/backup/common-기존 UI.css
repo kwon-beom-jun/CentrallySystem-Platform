@@ -1,0 +1,461 @@
+/* @font-face { */
+  /* font-family: 'NanumSquareNeo'; */
+  /* src: url('@/assets/fonts/NanumSquareNeo-aLt.ttf') format('truetype'); */
+  /* src: url('@/assets/fonts/NanumSquareNeo-bRg.ttf') format('truetype'); */
+  /* src: url('@/assets/fonts/NanumSquareNeo-cBd.ttf') format('truetype'); */
+  /* src: url('@/assets/fonts/NanumSquareNeo-dEb.ttf') format('truetype'); */
+  /* src: url('@/assets/fonts/NanumSquareNeo-eHv.ttf') format('truetype'); */
+/* } */
+
+/* Light 300 */
+/* @font-face {
+  font-family: 'NanumSquareNeo';
+  src: url('@/assets/fonts/NanumSquareNeo-aLt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+} */
+
+/* Regular 400 */
+/* @font-face {
+  font-family: 'NanumSquareNeo';
+  src: url('@/assets/fonts/NanumSquareNeo-bRg.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* Bold 700 */
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url('@/assets/fonts/NanumSquareNeo-cBd.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+}
+
+/* ExtraBold 800 */
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url('@/assets/fonts/NanumSquareNeo-dEb.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* TExtraBold 900 */
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url('@/assets/fonts/NanumSquareNeo-eHv.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+* {
+  scrollbar-width: thin; /* Firefox: 얇은 스크롤바 */
+  scrollbar-color: #888 #f0f0f0; /* Firefox: 스크롤바 색상과 배경 */
+}
+
+/* 한 곳에서 관리 */
+:root {
+  --sidebar-slide: .35s ease;
+  --content-max: 1100px;  /* ←  고정(최대) 넓이 */
+  --content-gap: 20px;    /* ←  최소 좌·우 여백 */
+}
+
+body {
+  font-family: 'NanumSquareNeo', sans-serif; /* 폰트 적용 */
+  /* background-color: #F9FAFB !important; */
+}
+
+/* ──────────────────────────────────────
+   Quill Editor Heading 크기 오버라이드
+   ────────────────────────────────────── */
+
+/* 데스크톱 기본: 적당히 크게(=문서 제목·소제목 역할) */
+/* clamp(최소, vw 단위, 최대) */
+.ql-editor h1,
+.ql-snow .ql-editor h1 {          /* snow 테마용 중복 선택 */
+  /* font-size: clamp(1.6rem, 2.5vw, 1.9rem) !important; */
+  font-size: 1.7rem !important;
+  line-height: 1.6;
+}
+
+.ql-editor h2,
+.ql-snow .ql-editor h2 {
+  font-size: 1.4rem !important;
+  line-height: 1.6;
+}
+
+.ql-editor h3,
+.ql-snow .ql-editor h3 {
+  font-size: 1.3rem !important;
+  line-height: 1.6;
+}
+
+.ql-editor p,
+.ql-snow .ql-editor p {
+  font-size: 1rem !important;
+  line-height: 1.6;
+}
+
+/* 모바일(≤650 px): 한 단계 더 줄이기 */
+@media (max-width: 650px) {
+  .ql-editor h1,
+  .ql-snow .ql-editor h1 {          /* snow 테마용 중복 선택 */
+    /* font-size: clamp(1.6rem, 2.5vw, 1.9rem) !important; */
+    font-size: 1.3rem !important;
+    line-height: 1.6;
+  }
+  
+  .ql-editor h2,
+  .ql-snow .ql-editor h2 {
+    font-size: 1.2rem !important;
+    line-height: 1.6;
+  }
+  
+  .ql-editor h3,
+  .ql-snow .ql-editor h3 {
+    font-size: 1.1rem !important;
+    line-height: 1.6;
+  }
+  
+  .ql-editor p,
+  .ql-snow .ql-editor p {
+    font-size: 0.875rem !important;
+    line-height: 1.6;
+  }
+}
+/* ──────────────────────────────────────
+   Quill Editor Heading 크기 오버라이드 END
+   ────────────────────────────────────── */
+.content-wrapper,
+.modal-open {
+  background-color: #FDFDFD;
+  /* background-color: #FBFBFB; */
+  /* background-color: #F9F9F9; */
+  /* background-color: #F7F7F7; */
+}
+
+.modal-open {
+  padding: 0px !important
+}
+
+.content {
+  padding: 130px 100px 100px 130px;
+  padding-inline: max(calc((100vw - var(--content-max))/2), var(--content-gap));
+  min-height: 100vh;
+  min-width: 360px;
+}
+
+.content-title {
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+}
+.content-sub-title {
+  margin-bottom: 70px;
+  padding-left: 10px;
+  color: #979797;
+}
+
+.table {
+  font-size: 0.85rem; /* 모바일 테이블 글자 크기 조정 */
+  color: #3a3a3a;
+}
+
+.table-container table tbody td {
+  font-size: 0.75rem;
+  color: #3d3d3d;
+}
+
+.btn-primary
+{
+  --bs-btn-color: #222;
+  --bs-btn-bg: #ffffff;
+  --bs-btn-border-color: #D4D4D4;
+  --bs-btn-hover-color: #222;
+  --bs-btn-hover-bg: #ebebeb;
+  /* --bs-btn-hover-border-color: #ffffff; */
+  --bs-btn-focus-shadow-rgb: 60, 153, 110;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #ffffff;
+  --bs-btn-active-border-color: #D4D4D4;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #ffffff;
+  --bs-btn-disabled-border-color: #ffffff;
+}
+
+/* 테이블 행에 마우스를 올렸을 때 배경색 변경 */
+#dataTable tbody tr:hover td {
+  background-color: #e7f1ff !important;
+}
+
+/* 날짜 선택 셀렉트 박스 크기 조정 */
+#yearSelect {
+  font-size: 0.8rem; /* 폰트 크기 줄이기 */
+  padding: 0.25rem 0.5rem; /* 패딩 줄이기 */
+  width: auto; /* 너비 자동 조정 */
+}
+
+.mx-width-1200, .mx-width-700, .mx-width-300, .mx-width-500 {
+  margin: 0 auto;         /* 좌우 자동 여백으로 가로 정렬 중앙 배치 */
+  display: block;         /* 블록 요소로 설정(이미 img 태그라면 기본 블록 아님) */
+  text-align: center !important; /* 내부 텍스트도 중앙 정렬을 원한다면 유지 */
+}
+
+.mx-width-1200 {
+  max-width: 650px;
+}
+.mx-width-700 {
+  max-width: 700px;
+}
+.mx-width-500 {
+  max-width: 500px;
+}
+.mx-width-300 {
+  max-width: 300px;
+}
+
+/* 상태별 색상 설정 */
+.status-approved {
+  color: green; /* 승인 상태는 초록색 */
+  font-weight: bold; /* 폰트를 진하게 설정 */
+}
+.status-pending {
+  color: blue; /* 신청 중 상태는 파란색 */
+  font-weight: bold; /* 폰트를 진하게 설정 */
+}
+.status-rejected {
+  color: red; /* 반려 상태는 빨간색 */
+  font-weight: bold; /* 폰트를 진하게 설정 */
+}
+.status-closed {
+  color: black; /* 회색 진하게 */
+  font-weight: bold; /* 폰트를 진하게 설정 */
+}
+
+/* @media (min-width: 1024px) {
+  body {
+    min-width: 1024px;
+    min-height: 768px;
+  }
+} */
+.ql-editor img {                 /* 추가 */
+  max-width: 100%;               /* 에디터 영역 100%까지만 */
+  height: auto;                  /* 비율 유지 */
+  display: block;                /* 여백 제어 (선택) */
+}
+/* 버튼·드롭다운 라벨 */
+.ql-toolbar button,
+.ql-toolbar .ql-picker-label,
+.ql-toolbar .ql-picker-options {
+  border-radius: 0 !important;   /* 둥근 모서리 제거 */
+}
+/* 위쪽 모서리만 둥글게 */
+.ql-toolbar {
+  border-radius: 3px 3px 0 0 !important;
+}
+/* 아래쪽 모서리만 둥글게 */
+.ql-container {
+  border-radius: 0 0 3px 3px !important;
+}
+.ql-toolbar {
+  border-bottom-width: 0 !important;       /* 아래쪽 선 없앰 */
+}
+.ql-container {
+  border-top-width: 1px;        /* 상단 선 한 줄로 통일 */
+}
+.ql-picker-label::before {
+  line-height: 15px !important;
+}
+
+.no-results-found {
+  /* margin-top: 85px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50dvh;
+}
+
+/* -----------------------------------------------------
+   전역 모달-헤더 스타일  (bootstrap-vue, plain bootstrap 둘 다)
+   ----------------------------------------------------- */
+/* ───────── 전역 모달 헤더 공통 ───────── */
+.modal-header {
+  height: 55px;
+  min-height: 55px;
+  padding:0 16px;
+  position:relative;                 /* ::after 효과용 */
+  /* background:linear-gradient(135deg,#4487ca 0%,#0052b6 100%); */
+  background:linear-gradient(135deg,#5492cf 0%,#0052b6 100%);
+  color:#ffffff;
+  border-bottom:1px solid #003e8c;
+}
+/* 아랫부분에 은은한 광택선 */
+.modal-header::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:rgba(255,255,255,.35);
+  pointer-events:none;
+}
+/* 닫기(X) 버튼 – 흰색 아이콘 & 투명한 원형 배경 */
+.modal-header .btn-close{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  /* background-color:rgba(255,255,255,.15); */
+  filter:invert(1) brightness(200%);
+}
+/* 제목 글꼴 크기·굵기 */
+.modal-title{
+  font-size:1.1rem;
+  font-weight:700;
+}
+.modal-header .btn-close {
+  width:25px;
+  height:25px;
+  line-height:25px;
+  background-size:33% 33%;
+}
+
+
+/* 반응형 스타일 */
+@media (min-width: 1920px) {
+  .navbar-text {
+    font-size: 1.5rem; /* 더 큰 텍스트 크기 */
+  }
+}
+
+/* @media (max-width: 700px) {
+  textarea {
+    font-size: 0.5rem !important;
+  }
+  body {
+    padding-top: 0px !important;
+  }
+  h2 {
+    font-size: 1rem !important;
+  }
+  .mb-3 {
+    margin-bottom: 0.25rem !important;
+    font-size: 0.75rem;
+  }
+  .content {
+    padding: 100px 20px 100px 20px !important;
+    font-size: 0.875rem !important;
+  }
+  .content-title {
+    margin-bottom: 10px !important;
+  }
+  .content-sub-title {
+    font-size: 0.8rem !important;
+    margin-bottom: 40px !important;
+  }
+  .modal-title {
+    font-size: 1rem !important;
+  }
+  .align-items-center {
+    margin-bottom: 10px !important;
+  }
+  .text-muted {
+    font-size: 0.5rem !important;
+    margin-bottom: 7px !important;
+  }
+  .modal-header {
+    height:50px;
+    min-height:50px;
+    padding:0 16px;
+  }
+  .modal-title {
+    font-size:1rem;
+    line-height:50px;
+  }
+  .modal-header .btn-close {
+    width:20px;
+    height:20px;
+    line-height:20px;
+    background-size:38% 38%;
+  }
+} */
+
+@media (max-width: 650px) {
+  textarea {
+    font-size: 0.5rem !important;
+  }
+  body {
+    padding-top: 0px !important;
+  }
+  h2 {
+    font-size: 1rem !important; /* 모바일 제목 글자 크기 조정 */
+  }
+  /* 툴바 아이콘·라벨 글자 크기 */
+  .ql-toolbar {
+    font-size: 0.75rem !important;           /* 전체 축소 */
+  }
+  /* 버튼·드롭다운 개별로 더 줄이고 싶다면 */
+  .ql-toolbar button,
+  .ql-toolbar .ql-picker-label {
+    font-size: 0.75rem !important;
+    padding: 4px 6px !important;
+    line-height: 1 !important;                 /* 글꼴 높이 축소 */
+    display: flex !important;                  /* flexbox 사용 */
+    align-items: lef !important;            /* 수직 가운데 */
+  }
+  /* 본문 에디터 영역 글자 크기 */
+  .ql-editor {
+    font-size: 0.75rem !important;
+  }
+  .ql-picker-options {
+    font-size: 0.75rem !important;
+  }
+  .mb-3 {
+    margin-bottom: 0.25rem !important; /* 하단 여백을 1rem으로 설정 */
+    font-size: 0.75rem;
+  }
+  .content {
+    padding: 100px 20px 80px 20px !important;
+    font-size: 0.875rem !important;
+  }
+  .content-title {
+    margin-bottom: 10px !important;
+  }
+  .content-sub-title {
+    font-size: 0.8rem !important;
+    margin-bottom: 30px !important;
+  }
+  .modal-header {
+    height:50px;
+    min-height:50px;
+    padding:0 16px;
+  }
+  .modal-title {
+    font-size:1rem;
+    line-height:50px;
+  }
+  .modal-header .btn-close {
+    width:20px;
+    height:20px;
+    line-height:20px;
+    background-size:38% 38%;
+  }
+  .align-items-center {
+    margin-bottom: 10px !important;
+  }
+  .text-muted {
+    font-size: 0.5rem !important;
+    margin-bottom: 7px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .ql-formats {
+    margin-right: 5px !important;
+  }
+  .ql-picker.ql-header {
+    width: 70px !important;
+  }
+  .ql-toolbar button, .ql-toolbar .ql-picker-label {
+    padding: 2px 3px !important
+  }
+}

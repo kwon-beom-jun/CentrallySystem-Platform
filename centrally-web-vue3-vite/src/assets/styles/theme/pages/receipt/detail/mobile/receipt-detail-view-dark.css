@@ -1,0 +1,94 @@
+/* ═══════════════════════════════════════════════════════════════
+ * ReceiptDetailViewMobile - Dark Mode
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .modal-body {
+  background-color: var(--theme-body-bg) !important;
+}
+
+body[data-theme="dark"] hr {
+  background: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .content-sub-title {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .list-group,
+body[data-theme="dark"] .list-group-item {
+  background-color: var(--theme-card-bg) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .approval-option {
+  color: var(--theme-text-primary) !important;
+  border: 1px solid var(--theme-border) !important;
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .approval-decision.active {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+body[data-theme="dark"] .approval-concurrence.active {
+  color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.1) !important;
+}
+
+body[data-theme="dark"] .form-group input[disabled],
+body[data-theme="dark"] .form-group select[disabled] {
+  background: var(--theme-input-disabled-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .reason-card {
+  border-color: var(--theme-border) !important;
+  background: var(--theme-card-bg) !important;
+}
+
+body[data-theme="dark"] .reason-card input[disabled] {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px dashed var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .reason-head {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .reason-display {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px dashed var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .state-badge.text-success {
+  /* background: rgba(34, 197, 94, 0.3) !important; */
+  border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+body[data-theme="dark"] .state-badge.text-danger {
+  /* background: rgba(239, 68, 68, 0.3) !important; */
+  border-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+body[data-theme="dark"] .state-badge.text-secondary {
+  /* background: rgba(156, 163, 175, 0.3) !important; */
+  border-color: rgba(156, 163, 175, 0.5) !important;
+}
+
+body[data-theme="dark"] .thumb__placeholder {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .file-name-display {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+

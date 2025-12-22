@@ -1,0 +1,41 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 폼 기본 스타일 (Form Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="search"],
+select,
+textarea,
+.form-control {
+  background-color: var(--theme-input-bg) !important;
+  border-color: var(--theme-input-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder {
+  color: var(--theme-input-placeholder) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.form-control:focus {
+  border-color: var(--theme-input-focus-border) !important;
+  background-color: var(--theme-input-bg) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+.form-control:disabled {
+  background-color: var(--theme-input-disabled-bg) !important;
+  color: var(--theme-text-disabled) !important;
+}
+

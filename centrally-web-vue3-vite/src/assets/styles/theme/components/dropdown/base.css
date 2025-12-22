@@ -1,0 +1,17 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 드롭다운 기본 스타일 (Dropdown Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.dropdown-menu {
+  background-color: var(--theme-bg-main) !important;
+  border-color: var(--theme-border-light) !important;
+}
+
+.dropdown-item {
+  color: var(--theme-text-primary) !important;
+}
+
+.dropdown-item:hover {
+  background-color: var(--theme-bg-secondary) !important;
+}
+

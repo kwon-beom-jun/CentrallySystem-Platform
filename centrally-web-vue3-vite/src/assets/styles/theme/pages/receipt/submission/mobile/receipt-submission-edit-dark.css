@@ -1,0 +1,169 @@
+/* ═══════════════════════════════════════════════════════════════
+ * ReceiptSubmissionEditMobile - Dark Mode
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .modal-body {
+  background-color: var(--theme-body-bg) !important;
+}
+
+body[data-theme="dark"] .form-group,
+body[data-theme="dark"] .form-row.align-items-center {
+  background: var(--theme-card-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+}
+
+body[data-theme="dark"] .list-group {
+  background: var(--theme-card-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
+}
+
+body[data-theme="dark"] .list-group-item {
+  background: var(--theme-card-bg) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .cs-card--blue,
+body[data-theme="dark"] .participants-group,
+body[data-theme="dark"] .approvers-group,
+body[data-theme="dark"] .fixed-approvers-group,
+body[data-theme="dark"] .reason.cs-card--blue {
+  background: var(--theme-card-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
+}
+
+body[data-theme="dark"] .square-btn {
+  background: var(--theme-btn-gray-bg) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .approval-option {
+  color: var(--theme-text-primary) !important;
+  border: 1px solid var(--theme-border) !important;
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .approval-decision.active {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+body[data-theme="dark"] .approval-concurrence.active {
+  color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.1) !important;
+}
+
+body[data-theme="dark"] .file-select-area {
+  border: none !important;
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .file-select-area i {
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .file-info-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .file-info-desc {
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .attachment-item {
+  border-bottom: 1px solid var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .attachment-badge.new {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .attachment-badge.existing {
+  background: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .attachment-name {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .mail-card {
+  border: 1px solid var(--theme-border) !important;
+  background: var(--theme-card-bg) !important;
+}
+
+body[data-theme="dark"] .mail-card__title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .mail-card__email {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .thumb__placeholder {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .file-name-display {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .external-section,
+body[data-theme="dark"] .cs-card--blue.external-section {
+  background: var(--theme-card-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
+}
+
+body[data-theme="dark"] .file-info-box {
+  background: #4a4a4a !important;
+  border: 1px dashed var(--theme-border) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .file-info-icon {
+  background: linear-gradient(135deg, #5a5a5a 0%, #6a6a6a 100%) !important;
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .file-info-text {
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .favorite-approvers-area {
+  background: var(--theme-card-bg) !important;
+  border: 1px solid var(--theme-border) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* body[data-theme="dark"] .favorite-approvers-area .btn-primary,
+body[data-theme="dark"] .favorite-approvers-area .btn-add {
+  background: var(--theme-primary) !important;
+  border-color: var(--theme-primary) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .favorite-approvers-area .btn-danger,
+body[data-theme="dark"] .favorite-approvers-area .btn-remove {
+  background: var(--theme-btn-red-bg) !important;
+  border-color: var(--theme-btn-red-bg) !important;
+  color: #ffffff !important;
+} */
+

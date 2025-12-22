@@ -1,0 +1,16 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 메인 페이지 기본 스타일 (Main Page Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 밝은모드: TimeCard 강제 흰색 */
+body[data-theme="light"] .time-card,
+body[data-theme="light"] .time-card .current-time,
+body[data-theme="light"] .time-card .current-date {
+  color: #ffffff !important;
+}
+
+body[data-theme="light"] .Toastify__toast,
+body[data-theme="light"] .Toastify__toast-body {
+  color: #ffffff !important;
+}
+

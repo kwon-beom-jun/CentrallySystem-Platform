@@ -1,0 +1,82 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 가이드 페이지 다크모드 오버라이드 (Guide Page Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .guide-page-container {
+  background: var(--theme-body-bg) !important;
+}
+
+body[data-theme="dark"] .guide-nav button {
+  background: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .guide-nav button:hover {
+  background: #004497 !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .guide-section h3 {
+  color: #3b82f6 !important;
+  border-bottom-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .guide-section h4 {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .guide-section ul,
+body[data-theme="dark"] .guide-section ol,
+body[data-theme="dark"] .guide-section li {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .section-divider {
+  border-bottom-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .nav-divider {
+  border-bottom-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .section-img {
+  background-color: var(--theme-bg-tertiary) !important;
+}
+
+body[data-theme="dark"] .guide-footer {
+  border-top-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .contact-section {
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .contact-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .contact-description {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .contact-grid {
+  background: var(--theme-bg-main) !important;
+}
+
+body[data-theme="dark"] .contact-box {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .contact-box-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .contact-box-value {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .img-overlay {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+

@@ -1,0 +1,111 @@
+/* ═══════════════════════════════════════════════════════════════
+ * FirstSidebar - Base Styles
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ===== 첫 번째 사이드바 (맨 왼쪽) ===== */
+.first-sidebar {
+  position: fixed;
+  left: 0;
+  top: 65px; /* 헤더 높이만큼 아래 */
+  width: 60px;
+  height: calc(100vh - 65px);
+  background: #363636;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1010;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.sidebar-item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #95A5A6;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebar-item:hover {
+  background: #34495E;
+  color: #ffffff;
+}
+
+.sidebar-item.active {
+  background: #3498DB;
+  color: #ffffff;
+}
+
+/* 활성화된 항목에 왼쪽 보더 */
+.sidebar-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #ffffff;
+}
+
+/* 툴팁 효과 */
+.sidebar-item:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 65px;
+  background: #34495E;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1011;
+  pointer-events: none;
+}
+
+/* 테마 토글 버튼 (회사 정보 위) */
+.theme-toggle-button {
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-toggle-button i {
+  font-size: 22px;
+}
+
+.theme-toggle-button:hover {
+  background: #F39C12;
+  color: #ffffff;
+}
+
+/* 회사 정보 버튼 (맨 아래 고정) */
+.company-info-button {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.company-info-button i {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.company-info-button:hover {
+  background: #16A085;
+  color: #ffffff;
+}
+
+.company-info-button.active {
+  background: #16A085;
+}
+
+/* 모바일 대응 */
+@media (max-width: 1300px) {
+  .first-sidebar {
+    display: none;
+  }
+}

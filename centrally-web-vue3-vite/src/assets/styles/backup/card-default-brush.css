@@ -1,0 +1,49 @@
+/* ──────────────────────────────────────────────
+ * 디자인 시안 3: 브러시 스트로크 스타일
+────────────────────────────────────────────── */
+
+@media (max-width: 650px) {
+  .card-enabled { overflow-x: visible !important; }
+  .card-enabled .table thead { display: none; }
+  .card-enabled .table, .card-enabled .table * { border: none !important; }
+
+  /* tr = 캔버스 카드 */
+  .card-default.card-enabled .table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 16px 0;
+    padding: 18px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 왼쪽 브러시 스트로크 효과 */
+  .card-default.card-enabled .table tbody tr::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    width: 40%;
+    height: 120%;
+    background-color: #343a40; /* 붓터치 색상 */
+    /* SVG clip-path를 이용해 불규칙한 모양 생성 */
+    clip-path: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 C25,10 20,90 0,100 Z' fill='%23000000'/%3E%3C/svg%3E");
+    transform: rotate(-10deg) scale(1.5);
+    opacity: 0.8;
+  }
+
+  /* 내부 셀(라인) 레이아웃 - 기존 로직 유지 */
+  .card-default.card-enabled .table tbody td {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    padding: 2px 0 !important; font-size: 0.78rem; white-space: normal !important;
+    background: transparent !important;
+    position: relative; /* 스트로크 위에 텍스트가 오도록 */
+  }
+  .card-default.card-enabled .table tbody td.mobile-inline {
+    width: auto !important; display: inline-flex; align-items: center; margin-right: 8px;
+  }
+}

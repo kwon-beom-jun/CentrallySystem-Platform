@@ -1,0 +1,102 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 조직도 다크모드 오버라이드 (Organization Chart Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .dept-card {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .dept-header {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .dept-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .dept-meta {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .search-clear {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .tips-box {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .tips-header {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .tips-body ul {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .tips-header__actions .toggle-small {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .tips-header__actions .toggle-small.active {
+  background: var(--theme-btn-primary-bg) !important;
+  color: #ffffff !important;
+  border-color: var(--theme-btn-primary-bg) !important;
+}
+
+body[data-theme="dark"] .team-section {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .team-title {
+  color: var(--theme-text-secondary) !important;
+  border-bottom-color: var(--theme-border) !important;
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .emp-card {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .emp-card.clickable:hover {
+  border-color: var(--theme-text-primary) !important;
+  background-color: var(--theme-bg-hover) !important;
+}
+
+body[data-theme="dark"] .avatar-wrapper {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .avatar-placeholder {
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .emp-name {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .emp-pos {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .loading-box {
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .ri-arrow-down-s-line {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .mark {
+  background: #854d0e !important;
+  color: #fef3c7 !important;
+}
+

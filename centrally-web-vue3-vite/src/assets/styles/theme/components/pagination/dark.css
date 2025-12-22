@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 페이지네이션 다크모드 오버라이드 (Pagination Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .pagination-container {
+  background-color: var(--theme-table-bg) !important;
+}
+
+body[data-theme="dark"] .page-link {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .page-item:not(.active):not(.disabled) .page-link:hover {
+  background-color: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .page-item.active .page-link {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #f1f5f9 !important;
+  font-weight: 700 !important;
+}
+
+body[data-theme="dark"] .page-item.disabled .page-link {
+  color: var(--theme-text-disabled) !important;
+}
+
+body[data-theme="dark"] .page-item:first-child .page-link,
+body[data-theme="dark"] .page-item:last-child .page-link {
+  border-color: var(--theme-border) !important;
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .page-item:not(.disabled):first-child .page-link:hover,
+body[data-theme="dark"] .page-item:not(.disabled):last-child .page-link:hover {
+  border-color: var(--theme-border-dark) !important;
+  background-color: var(--theme-bg-tertiary) !important;
+}
+

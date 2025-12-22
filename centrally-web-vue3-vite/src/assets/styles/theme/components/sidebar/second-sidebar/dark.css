@@ -1,0 +1,34 @@
+/* ═══════════════════════════════════════════════════════════════
+ * SecondSidebar 다크모드 오버라이드
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 다크모드: SecondSidebar active 메뉴 */
+body[data-theme="dark"] .sub-nav-link.active {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+body[data-theme="dark"] .sub-nav-link.active i {
+  color: #f1f5f9 !important;
+}
+
+/* 다크모드: SecondSidebar 즐겨찾기 관리 버튼 및 설명 */
+body[data-theme="dark"] .footer-manage-btn-wrapper {
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .footer-manage-btn {
+  background: var(--theme-btn-primary-bg) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .footer-manage-btn:hover {
+  background: var(--theme-btn-primary-hover) !important;
+}
+
+body[data-theme="dark"] .favorites-info {
+  background: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
