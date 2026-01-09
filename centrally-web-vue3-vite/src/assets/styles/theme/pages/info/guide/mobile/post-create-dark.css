@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════════════════════════
+ * PostCreateMobile - Dark Mode
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .modal-body {
+  background-color: var(--theme-body-bg) !important;
+}
+
+body[data-theme="dark"] .form-group {
+  background: transparent !important;
+  border: none !important;
+}
+
+body[data-theme="dark"] .form-control {
+  background: transparent !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .editor-box {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .file-select-area {
+  background: transparent !important;
+  border: none !important;
+}
+
+body[data-theme="dark"] .file-select-area i {
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .file-info-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .file-info-desc {
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .attachment-item {
+  border-bottom: 1px solid var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .attachment-badge.new {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .attachment-name {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .mail-card {
+  border: 1px solid var(--theme-border) !important;
+  background: var(--theme-card-bg) !important;
+}
+
+body[data-theme="dark"] .mail-card__title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .dot {
+  background: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .mail-card__email {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .badge {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .picker-body {
+  border: 1px solid var(--theme-border) !important;
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .checkitem {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .hint {
+  color: var(--theme-text-muted) !important;
+}
+

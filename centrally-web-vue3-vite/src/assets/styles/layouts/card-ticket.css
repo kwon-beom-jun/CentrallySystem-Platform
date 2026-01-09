@@ -1,0 +1,110 @@
+/* ──────────────────────────────────────────────
+   카드 · 테이블  ⟡  Variant = ticket
+   table-container 에 .card-enabled.card-ticket 가
+   붙어 있을 때만(=모바일 카드) tr 을 카드처럼 꾸민다
+────────────────────────────────────────────── */
+
+/* ============ DESKTOP (>650 px, 카드가 안 보일 때) ============ */
+.card-ticket .table tbody tr {
+  border: 1px solid transparent; /* 여백용 */
+  margin-bottom: 6px;
+}
+
+
+/* (1) td 도 아이보리 배경으로 맞추기 */
+.card-ticket.card-enabled .table tbody td{
+  background: var(--theme-card-bg) !important;
+}
+
+/* (2) 점선 테두리 – 네 변 다 보이도록 !important 로 덮어쓰기
+      (card-common 에서 border-left/right 를 지워버리므로) */
+.card-ticket.card-enabled .table tbody tr{
+  border: 2px dashed var(--theme-border) !important;
+  border-radius: 12px;
+}
+
+/* (3) 원한다면 td 안쪽 여백 조금만 더 주기 (선택) */
+.card-ticket.card-enabled .table tbody td{
+  padding:3px 0 !important;               /* 살짝만 늘림(취향) */
+}
+
+/* ============ MOBILE ≤ 650 px ============= */
+@media (max-width: 650px) {
+  /* 모바일 카드 모드: 테이블 배경을 컨텐츠 배경색으로 */
+  .card-ticket.card-enabled .table,
+  .card-ticket.card-enabled .table tbody {
+    background: var(--theme-body-bg) !important;
+  }
+
+  /* tr = 카드 */
+  .card-ticket.card-enabled .table tbody tr {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 22px 0;
+    padding: 18px 20px 20px;
+
+    background: var(--theme-card-bg);
+    border: 2px dashed var(--theme-border);
+    border-radius: 12px;
+    overflow: hidden;
+
+    /* 등장 애니메이션 */
+    box-shadow: 0 8px 22px var(--theme-shadow-sm);
+    transform: translateY(32px) rotateX(6deg);
+    opacity: 0;
+    animation: ticketRise 0.5s cubic-bezier(0.25, 0.8, 0.35, 1) forwards;
+  }
+
+  /* 제목(대개 mobile-line-1) */
+  .card-ticket.card-enabled .table tbody td.mobile-line-1 {
+    font-weight: 700;
+    color: var(--theme-text-primary);
+    font-size: 0.73rem !important;
+    margin-bottom: 4px;
+  }
+
+  /* 일반 텍스트 */
+  .card-ticket.card-enabled .table tbody td {
+    color: var(--theme-text-primary);
+    font-size: 0.72rem !important;
+  }
+
+  /* 상태 컬러 예시 */
+  .card-ticket .text-success {
+    color: #00874c !important;
+  }
+  .card-ticket .text-danger {
+    color: #c32828 !important;
+  }
+  .card-ticket .text-primary {
+    color: #0066c1 !important;
+  }
+
+  /* 예: 인원 리스트 라인(원하면 삭제) */
+  .card-ticket.card-enabled .table tbody td.mobile-line-6 {
+    background: #faf7ee;
+    border: 1px dashed #d8d0bd;
+    border-radius: 6px;
+    padding: 4px 8px !important;
+  }
+
+  /* 터치 피드백 */
+  .card-ticket.card-enabled .table tbody tr:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* 등장 애니메이션 */
+@keyframes ticketRise {
+  0% {
+    transform: translateY(32px) rotateX(6deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}

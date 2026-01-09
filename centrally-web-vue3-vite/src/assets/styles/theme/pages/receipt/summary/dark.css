@@ -1,0 +1,56 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 영수증 년도별 요약 다크모드 오버라이드 (Receipt Summary Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .month-card {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .month-card:hover {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border-hover) !important;
+}
+
+body[data-theme="dark"] .month-header {
+  background: var(--theme-bg-tertiary) !important;
+}
+
+body[data-theme="dark"] .month-header h3 {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .stat-label,
+body[data-theme="dark"] .total-label,
+body[data-theme="dark"] .summary-label {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .stat-value,
+body[data-theme="dark"] .total-value,
+body[data-theme="dark"] .summary-value {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .yearly-summary-card {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .summary-header h2 {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .summary-item {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .summary-stats {
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .summary-total {
+  background: var(--theme-bg-tertiary) !important;
+}
+

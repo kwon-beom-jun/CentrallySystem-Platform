@@ -1,0 +1,240 @@
+
+.comment-section {
+  /* color: #333; */
+  margin-top: 30px;
+  position: relative;
+}
+
+.comment-hr-line {
+  margin: 30px 0px 10px 0px;
+  color: #000000 !important;
+}
+
+.comment-section.loading {
+  min-height: 160px; /* 스피너 가시성 확보 */
+}
+
+.comment-loading-placeholder {
+  height: 200px;
+  width: 100%;
+}
+.comment-title {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.comment-input {
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+.comment-textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+}
+.comment-textarea-reply {
+  width: calc(100% - 50px);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+  margin-left: 50px;
+}
+.comment-actions {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+}
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e5e5e5;
+  /* gap: 16px; */
+}
+.comment-item {
+  /* border-top: 1px solid #e5e5e5; */
+  border-bottom: 1px solid #e5e5e5;
+  padding: 12px 0;
+}
+.reply-list {
+  margin-left: 16px;
+  border-left: 2px solid #f0f0f0;
+  padding-left: 12px;
+  margin-top: 8px;
+}
+.reply-item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.comment-header {
+  display: flex; /* align-items: center; */
+  justify-content: space-between;
+  gap: 8px;
+}
+.comment-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f5f5f5;
+  border: 1px solid #eee;
+}
+.comment-meta {
+  display: flex;
+  flex-direction: column;
+}
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comment-body {
+  margin: 0px 0px 0px 50px;
+  font-size: 0.85rem;
+}
+.comment-author {
+  margin-bottom: 2px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #2a87a8;
+}
+.comment-date {
+  font-size: 0.75rem;
+  color: #888;
+}
+.comment-text {
+  font-size: 0.9rem;
+}
+.comment-item-actions {
+  display: flex;
+  /* gap: 8px; */
+  gap: 0px;
+  margin-top: 6px;
+  position: relative;
+}
+.comment-actions-menu {
+  position: absolute;
+  right: 0px;
+  top: 24px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 5;
+  min-width: 90px;
+}
+.comment-actions-menu .comment-actions-item {
+  position: static;
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.comment-actions-menu .comment-actions-item:hover {
+  background: #f8f8f8;
+}
+.comment-actions-item { }
+.icon-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+}
+.reply-input {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+.reply-toggle {
+  font-size: 0.75rem;
+  color: #666;
+  cursor: pointer;
+  width: fit-content;
+  color: #2a87a8;
+}
+
+/* 댓글 액션 · 토글 보조 스타일 */
+.reply-toggle-row {
+  margin: 18px 0px 18px 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* reply smooth fade (높이 고정 변화로 인한 좌측 라인 요동 방지) */
+.reply-fade-enter-from,
+.reply-fade-leave-to {
+  opacity: 0;
+}
+.reply-fade-enter-active,
+.reply-fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+.reply-fade-enter-to,
+.reply-fade-leave-from {
+  opacity: 1;
+}
+
+/* reply-list의 레이아웃 흔들림 방지: 트랜지션 중에도 테두리/패딩 고정 */
+.reply-list {
+  will-change: opacity;
+}
+
+/* 답글 컴팩트 버튼 패딩 */
+.btn-reply-compact {
+  padding: 3px 8px !important; /* 위아래 3px, 좌우 8px */
+  font-size: 0.65rem !important;
+  height: 25px !important;
+  width: 40px !important;
+}
+
+/* 모바일 650px 이하 */
+@media (max-width: 650px) {
+  .comment-title {
+    font-size: 0.8rem;
+  }
+  .comment-avatar {
+    width: 35px;
+    height: 35px;
+  }
+  .comment-author {
+    font-size: 0.75rem;
+  }
+  .comment-textarea {
+    font-size: 0.75rem !important;
+  }
+  .comment-textarea-reply {
+    margin-left: 40px;
+    width: calc(100% - 40px);
+  }
+  .comment-body {
+    font-size: 0.75rem;
+    margin-left: 42px;
+  }
+  .comment-text {
+    font-size: 0.75rem;
+  }
+  .comment-date {
+    font-size: 0.65rem;
+  }
+  .reply-toggle {
+    font-size: 0.75rem;
+  }
+  .reply-toggle-row {
+    margin-left: 42px;
+  }
+  /* 답글 컴팩트 버튼 (모바일) - SFC scoped .btn 스타일의 !important를 이기기 위해 특이성 상승 */
+  button.btn.btn-reply-compact.btn-reply-compact {
+    padding: 3px 5px 0px 5px !important;
+    font-size: 0.65rem !important;
+    height: 22px !important;
+    width: 35px !important;
+  }
+  .comment-actions-item {
+    font-size: 0.65rem !important;
+  }
+}

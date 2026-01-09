@@ -1,0 +1,69 @@
+/* ──────────────────────────────────────────────
+ * 글래스모피즘 스타일
+────────────────────────────────────────────── */
+
+@media (max-width: 650px) {
+  /* 0. 기본 설정 */
+  .card-enabled { overflow-x: visible !important; }
+  .card-enabled .table thead { display: none; }
+  .card-enabled .table, .card-enabled .table * { border: none !important; }
+
+  /* 1. tr = 유리 카드 */
+  .card-default.card-enabled .table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 16px 0;
+    padding: 18px;
+    
+    /* 글래스모피즘 핵심 스타일 */
+    background: rgba(255, 255, 255, 0.5); /* 반투명 흰색 배경 */
+    backdrop-filter: blur(10px); /* 뒷배경 블러 처리 */
+    -webkit-backdrop-filter: blur(10px); /* 사파리 호환성 */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 빛나는 효과의 테두리 */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */
+    
+    position: relative;
+    transition: background 0.2s ease;
+  }
+
+  /* 호버 효과 */
+  .card-default.card-enabled .table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  /* 2. 내부 셀(라인) 레이아웃 - 기존 로직 유지 */
+  .card-default.card-enabled .table tbody td {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    padding: 2px 0 !important;
+    font-size: 0.78rem;
+    white-space: normal !important;
+    background-color: transparent !important;
+    color: #1a1a1a; /* 어두운 배경에서도 잘 보이도록 짙은 색상 */
+  }
+  .card-default.card-enabled .table tbody td.mobile-inline {
+    width: auto !important; display: inline-flex; align-items: center;
+    margin-right: 8px;
+  }
+
+  /* 3. 비활성화 상태 */
+  .card-default.card-enabled .table tbody tr.disabled-row {
+    background: rgba(240, 240, 240, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0.7;
+  }
+  .card-default.card-enabled .table tbody tr.disabled-row:hover {
+    background: rgba(240, 240, 240, 0.5);
+  }
+  
+  /* 4. 체크박스 위치 보정 */
+  .card-default.card-enabled .table tbody tr:has(> .mobile-checkbox) {
+    padding-left: 48px;
+  }
+  .card-default.card-enabled .table tbody td.mobile-checkbox {
+    position: absolute; left: 16px; top: 16px;
+    width: auto !important; padding: 0 !important;
+  }
+}

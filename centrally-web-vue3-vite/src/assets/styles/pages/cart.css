@@ -1,0 +1,79 @@
+.hr-chart-gap {
+  margin: 60px 0 !important;
+  border: none !important;
+  border-top: 1px solid #585858 !important;
+}
+.chart-card-wrapper {
+  /* border: 1px solid #dcdcdc !important; */
+  border-radius: 10px !important;
+}
+.dept-timeline-chart {
+  margin-bottom: 30px !important;
+}
+/* 재직 인원 */
+.employees-data {
+  padding: 0px 0px 0px 30px;
+}
+/* 영수증 통계 */
+.expenseStats-data {
+  padding: 30px 30px 0px 30px;
+}
+/* ─── 기존 스타일 그대로 ─── */
+.apexcharts-canvas {
+  width: 100% !important;
+}
+.v-chart-title-custom {
+  height: 55px !important;
+  align-content: center !important;
+  padding: 0px 20px 0px 20px !important;
+}
+/* .v-field__input {
+  display: block !important;
+  gap: 0 !important;
+  padding-right: 10px !important;
+  font-size: 0.8rem !important;
+} */
+.chart-start-date, .chart-end-date {
+  max-width: 140px !important;
+}
+.employee-select {
+  max-width: 80px !important;
+}
+.select-small {
+  font-size: 0.875rem !important;   /* 원하는 크기로 한 번에 */
+}
+.select-small-option {
+  font-size: 0.8rem !important;   /* 원하는 크기로 한 번에 */
+}
+.divider-with-gap {
+  margin: 0px 24px !important;    /* 상하 40px, 좌우 24px */
+  border: none;
+  border-top: 1px solid #a3a3a3;
+}
+@media (max-width: 960px) {
+  .expenseStats-data {
+    padding: 10px;
+  }
+  .employees-data {
+    padding: 0px;
+  }
+}
+@media (max-width: 650px) {
+  .v-chart-title-custom {
+    padding: 0 10px 0 10px !important
+  }
+  .select-small {
+    font-size: 0.8rem !important;   /* 원하는 크기로 한 번에 */
+  }
+  .select-small-option {
+    font-size: 0.7rem !important;   /* 원하는 크기로 한 번에 */
+  }
+  .gap-2 {
+    gap: 5px !important;
+  }
+  .divider-with-gap {
+    margin: 0px 14px !important;    /* 상하 40px, 좌우 24px */
+    border: none;
+    border-top: 1px solid #a3a3a3;
+  }
+}

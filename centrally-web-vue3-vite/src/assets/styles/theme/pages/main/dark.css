@@ -1,0 +1,73 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 메인 페이지 다크모드 오버라이드 (Main Page Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .notice-hr,
+body[data-theme="dark"] .receipt-hr {
+  border-top: 1px solid #ffffff !important;
+}
+
+body[data-theme="dark"] .recent-notice-title + div hr,
+body[data-theme="dark"] .recent-receipt-title + div hr {
+  border-top: 1px solid #ffffff !important;
+}
+
+body[data-theme="dark"] .recent-notice-title,
+body[data-theme="dark"] .recent-receipt-title {
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .recent-notice-title .font-weight-900,
+body[data-theme="dark"] .recent-receipt-title .font-weight-900,
+body[data-theme="dark"] .notice-title-inner-box,
+body[data-theme="dark"] .receipt-title-inner-box {
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .contact-info {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .contact-info hr {
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .info-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .info-text {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .icon-address {
+  color: #818cf8 !important;
+  background-color: rgba(129, 140, 248, 0.15) !important;
+  border-color: #818cf8 !important;
+}
+
+body[data-theme="dark"] .icon-tel {
+  color: #34d399 !important;
+  background-color: rgba(52, 211, 153, 0.15) !important;
+  border-color: #34d399 !important;
+}
+
+body[data-theme="dark"] .icon-fax {
+  color: #fbbf24 !important;
+  background-color: rgba(251, 191, 36, 0.15) !important;
+  border-color: #fbbf24 !important;
+}
+
+/* 모바일: 타이틀 박스 아래쪽만 직각으로 */
+@media (max-width: 650px) {
+  body[data-theme="dark"] .notice-title-inner-box {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  body[data-theme="dark"] .receipt-title-inner-box {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+

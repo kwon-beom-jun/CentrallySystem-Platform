@@ -1,0 +1,37 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 버튼 다크모드 오버라이드 (Button Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 밝은모드: 부서 및 팀 관리 버튼 - 파란색/빨간색 복원 */
+body[data-theme="light"] .bnt-department-replace,
+body[data-theme="light"] .list-item.btn-outline-primary {
+  color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+body[data-theme="light"] .bnt-department-delete,
+body[data-theme="light"] .list-item.btn-outline-danger {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+body[data-theme="light"] .bnt-department-replace:hover,
+body[data-theme="light"] .list-item.btn-outline-primary:hover {
+  color: #ffffff !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+body[data-theme="light"] .bnt-department-delete:hover,
+body[data-theme="light"] .list-item.btn-outline-danger:hover {
+  color: #ffffff !important;
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+body[data-theme="dark"] .btn-team-add {
+  background: var(--theme-input-bg) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-input-border) !important;
+}
+

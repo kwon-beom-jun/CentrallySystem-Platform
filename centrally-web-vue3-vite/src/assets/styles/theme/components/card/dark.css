@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 카드 다크모드 오버라이드 (Card Dark Mode Overrides)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .v-card {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .v-card-title {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .v-card-text {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .v-chart-title-custom,
+body[data-theme="dark"] .v-chart-text-custom {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .box-shadow-gray {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+body[data-theme="dark"] .kpi-card,
+body[data-theme="dark"] .kpi-wrap .kpi-card {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .kpi-title {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .kpi-value {
+  color: var(--theme-text-primary) !important;
+}
+

@@ -1,0 +1,114 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 다크 테마 변수 (Dark Theme Variables) - 개선된 색상
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] {
+  /* 주요 색상 - 더 밝고 자연스러운 색상 */
+  --theme-primary: #3b82f6;
+  --theme-primary-dark: #2563eb;
+  --theme-primary-light: #60a5fa;
+  --theme-primary-lighter: #93c5fd;
+  
+  /* 배경 및 표면 - 더 밝은 회색 톤 */
+  --theme-bg-main: #242424;
+  --theme-bg-secondary: #303030;
+  --theme-bg-tertiary: #404040;
+  --theme-surface: #303030;
+  --theme-body-bg: #1a1a1a;
+  
+  /* 테두리 - 더 부드러운 색상 */
+  --theme-border: #555555;
+  --theme-border-light: #909090;
+  --theme-border-dark: #606060;
+  --theme-border-hover: #3b82f6;
+  
+  /* 그림자 - 더 자연스러운 그림자 */
+  --theme-shadow: rgba(0, 0, 0, 0.4);
+  --theme-shadow-hover: rgba(0, 0, 0, 0.5);
+  --theme-shadow-sm: rgba(0, 0, 0, 0.3);
+  --theme-shadow-md: rgba(0, 0, 0, 0.4);
+  --theme-shadow-lg: rgba(0, 0, 0, 0.5);
+  
+  /* 텍스트 - 더 밝고 읽기 쉬운 색상 */
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #d1d5db;
+  --theme-text-tertiary: #9ca3af;
+  --theme-text-muted: #6b7280;
+  --theme-text-disabled: #4b5563;
+  --theme-text-inverse: #000000;
+  
+  /* 칩/뱃지 - 더 밝은 색상 */
+  --theme-chip-bg: #3a3a3a;
+  --theme-chip-text: #ffffff;
+  --theme-chip-border: #505050;
+  
+  /* 카드 헤더 - 그라데이션 개선 */
+  --theme-card-header-from: #3a3a3a;
+  --theme-card-header-to: #282828;
+  
+  /* 아이콘 - 더 밝은 색상 */
+  --theme-icon-primary: #d1d5db;
+  --theme-icon-secondary: #9ca3af;
+  --theme-icon-muted: #6b7280;
+  
+  /* 모달 - 더 밝은 배경 */
+  --theme-modal-bg: #303030;
+  --theme-modal-overlay: rgba(0, 0, 0, 0.8);
+  --theme-modal-border: #404040;
+  
+  /* 버튼 - 더 생생한 색상 */
+  --theme-btn-primary-bg: #3b82f6;
+  --theme-btn-primary-hover: #2563eb;
+  --theme-btn-secondary-bg: #4a4a4a;
+  --theme-btn-gray-bg: #3a3a3a;
+  --theme-btn-red-bg: #ef4444;
+  --theme-btn-green-bg: #22c55e;
+  --theme-btn-disabled-bg: #282828;
+  --theme-btn-disabled-text: #6b7280;
+  
+  /* 테이블 - 다크 그라디언트 배경 (좀 더 연한 톤) */
+  --theme-table-bg: linear-gradient(135deg, #343434 0%, #3c3c3c 100%);
+  --theme-table-placeholder-bg: linear-gradient(135deg, #343434 0%, #3c3c3c 100%);
+  --theme-table-header-bg: linear-gradient(135deg, #5e5e5e 0%, #515151 100%);
+  --theme-table-header-text: var(--theme-text-primary);
+  --theme-table-border: #404040;
+  --theme-table-row-hover: #3a3a3a;
+  --theme-table-row-selected: #4a4a4a;
+  --theme-table-row-even: #282828;
+  
+  /* 입력 필드 - 더 밝은 배경 */
+  --theme-input-bg: #303030;
+  --theme-input-border: #4b5563;
+  --theme-input-focus-border: #3b82f6;
+  --theme-input-disabled-bg: #282828;
+  --theme-input-placeholder: #6b7280;
+  
+  /* 헤더/네비게이션 - 더 밝은 배경 */
+  --theme-header-bg: #303030;
+  --theme-header-border: #404040;
+  --theme-nav-bg: #303030;
+  --theme-nav-item-hover: #3a3a3a;
+  --theme-nav-item-active: #4a4a4a;
+  
+  /* 사이드바 - 더 밝은 배경 */
+  --theme-sidebar-bg: #303030;
+  --theme-sidebar-border: #404040;
+  --theme-sidebar-item-hover: #3a3a3a;
+  
+  /* 카드/서브메뉴 - 더 밝은 배경 */
+  --theme-card-bg: #303030;
+  --theme-submenu-bg: #282828;
+  --theme-bg-hover: #3a3a3a;
+
+  /* 회색 단계 (연한 → 진한) */
+  --theme-gray-100: #d1d5db;
+  --theme-gray-200: #bfc5cd;
+  --theme-gray-300: #9ca3af;
+  --theme-gray-400: #6b7280;
+  --theme-gray-500: #4b5563;
+  --theme-gray-600: #374151;
+  --theme-gray-700: #2d3138;
+  --theme-gray-800: #1f2937;
+  --theme-gray-900: #111827;
+}
+

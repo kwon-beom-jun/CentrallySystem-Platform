@@ -1,0 +1,73 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 폼 다크모드 오버라이드 (Form Dark Mode Overrides)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* DefaultSelect 드롭다운 */
+body[data-theme="dark"] select,
+body[data-theme="dark"] .select-dropdown,
+body[data-theme="dark"] option {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .search-input {
+  background: var(--theme-input-bg) !important;
+  border-color: var(--theme-input-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .search-input:focus {
+  border-color: var(--theme-input-focus-border) !important;
+}
+
+/* 다크모드: 라벨 */
+body[data-theme="dark"] .default-label,
+body[data-theme="dark"] label {
+  background-color: transparent !important;
+  color: var(--theme-text-primary) !important;
+}
+
+/* 다크모드: 인풋 배경 투명 */
+body[data-theme="dark"] input,
+body[data-theme="dark"] .form-control,
+body[data-theme="dark"] .default-textfield input {
+  background-color: transparent !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] input:focus,
+body[data-theme="dark"] .form-control:focus {
+  background-color: transparent !important;
+  border-color: var(--theme-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+}
+
+body[data-theme="dark"] input::placeholder,
+body[data-theme="dark"] .form-control::placeholder {
+  color: var(--theme-text-muted) !important;
+}
+
+/* 다크모드: 텍스트에리어 */
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] .form-control.textarea {
+  background-color: transparent !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] textarea:focus {
+  background-color: transparent !important;
+  border-color: var(--theme-primary) !important;
+}
+
+/* 다크모드: 비활성화된 입력 */
+body[data-theme="dark"] input:disabled,
+body[data-theme="dark"] textarea:disabled,
+body[data-theme="dark"] select:disabled {
+  background-color: var(--theme-input-disabled-bg) !important;
+  color: var(--theme-text-muted) !important;
+  opacity: 0.7 !important;
+}
+

@@ -1,0 +1,21 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 카드 기본 스타일 (Card Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.card {
+  background-color: var(--theme-bg-main) !important;
+  border-color: var(--theme-border-light) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+.card-header {
+  background-color: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border-light) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+.card-body {
+  background-color: var(--theme-bg-main) !important;
+  color: var(--theme-text-primary) !important;
+}
+

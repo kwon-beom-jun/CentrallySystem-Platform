@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════════════════════════════
+ * PostEditMobile - Dark Mode
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .modal-body {
+  background-color: var(--theme-body-bg) !important;
+}
+
+body[data-theme="dark"] .form-group {
+  background: transparent !important;
+  border: none !important;
+}
+
+body[data-theme="dark"] .form-control {
+  background: transparent !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .editor-box {
+  background: var(--theme-bg-secondary) !important;
+  border: 1px solid var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .attachment-item {
+  border-bottom: 1px solid var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .attachment-badge.new {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: var(--theme-primary) !important;
+}
+
+body[data-theme="dark"] .attachment-badge.old {
+  background: rgba(6, 182, 212, 0.2) !important;
+  color: #06b6d4 !important;
+}
+
+body[data-theme="dark"] .attachment-name {
+  color: var(--theme-text-primary) !important;
+}
+

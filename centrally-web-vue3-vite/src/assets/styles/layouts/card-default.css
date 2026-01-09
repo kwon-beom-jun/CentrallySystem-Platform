@@ -1,0 +1,76 @@
+/* ──────────────────────────────────────────────
+ * 카드 디자인: 세그먼트 티켓 (너비 추가 수정)
+────────────────────────────────────────────── */
+
+@media (max-width: 650px) {
+  
+  hr {
+    margin: 10px 0 10px 0 !important;
+  }
+
+  /* 모바일 카드 모드: 테이블 배경을 컨텐츠 배경색으로 */
+  .card-default.card-enabled .table,
+  .card-default.card-enabled .table tbody {
+    background: var(--theme-body-bg) !important;
+  }
+
+  /* 첫 번째 카드의 상단 마진만 제거 (추가된 부분) */
+  .card-default.card-enabled .table tbody tr:first-child {
+    margin-top: 0;
+  }
+
+  /* 카드 기본: 배달의민족 주문내역 느낌 */
+  .card-default.card-enabled .table tbody tr {
+    background: var(--theme-card-bg);
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: 0 2px 8px var(--theme-shadow-sm);
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease, background-color .2s ease;
+  }
+  .card-default.card-enabled .table tbody tr:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px var(--theme-shadow-md);
+    border-color: var(--theme-border-hover);
+    background-color: var(--theme-bg-hover);
+  }
+  /** 
+   * 기존의 td 호버 효과는 비활성화하여 중복 방지
+   * (DefaultTable의 기본 스타일을 덮어쓰기 위해 필요)
+   */
+  .card-default.card-enabled .table tbody tr:hover td {
+    background-color: transparent !important;
+  }
+
+  /* 왼쪽 스텁 제거 */
+  .card-default.card-enabled .table tbody tr::before {
+    content: none !important;
+  }
+
+  /* 내부 셀 레이아웃 */
+  .card-default.card-enabled .table tbody td {
+    padding: 4px 0;
+    font-size: 0.82rem;
+    /* white-space: normal !important; */
+    color: var(--theme-text-primary);
+    background: transparent !important;
+    position: relative;
+  }
+  .card-default.card-enabled .table tbody td .sub,
+  .card-default.card-enabled .table tbody td .muted {
+    color: var(--theme-text-secondary);
+  }
+
+  /* 체크박스 있을 때 레이아웃 보정 */
+  .card-default.card-enabled .table tbody tr:has(> .mobile-checkbox) {
+    padding-left: 35px !important;
+  }
+  .card-default.card-enabled .table tbody td.mobile-checkbox {
+    position: absolute;
+    left: 12px;
+    top: 25px;
+    width: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+}

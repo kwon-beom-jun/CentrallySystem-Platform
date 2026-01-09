@@ -1,0 +1,180 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 공통 기본 스타일 (Common Base Styles)
+ * ═══════════════════════════════════════════════════════════════
+ * CSS 변수를 사용하여 테마에 독립적으로 작동하는 공통 스타일
+ */
+
+/* body 배경 */
+body {
+  background-color: var(--theme-body-bg) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+/* 모든 div, section 기본 색상 */
+div, section, article, aside, main {
+  color: var(--theme-text-primary);
+}
+
+/* 제목 요소 */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--theme-text-primary) !important;
+}
+
+/* 링크 */
+a {
+  color: var(--theme-text-primary);
+}
+
+/* 라벨 */
+label {
+  color: var(--theme-text-secondary) !important;
+}
+
+/* 리스트 */
+ul, ol {
+  color: var(--theme-text-primary);
+}
+
+li {
+  color: var(--theme-text-primary);
+}
+
+/* 특정 클래스 오버라이드 */
+.white-bg,
+.bg-white {
+  background-color: var(--theme-bg-main) !important;
+}
+
+.gray-bg,
+.bg-gray {
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+/* 폼 그룹 */
+.form-group {
+  color: var(--theme-text-primary);
+}
+
+.form-label {
+  color: var(--theme-text-secondary) !important;
+}
+
+/* 버튼 텍스트 */
+.btn {
+  color: inherit;
+}
+
+/* 구분선 */
+hr {
+  border-color: var(--theme-border-light) !important;
+}
+
+/* Bootstrap container는 투명 유지 */
+.container,
+.container-fluid {
+  background-color: transparent;
+  color: var(--theme-text-primary);
+}
+
+/* 패널, 박스 등 */
+.panel,
+.box,
+.wrapper {
+  background-color: var(--theme-bg-main);
+  color: var(--theme-text-primary);
+}
+
+/* 콘텐츠 영역 */
+.content,
+.main-content-area,
+.content-wrapper {
+  background-color: var(--theme-body-bg) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+/* 스크롤바 (Firefox) */
+* {
+  scrollbar-color: var(--theme-text-muted) var(--theme-bg-secondary);
+}
+
+/* 스크롤바 (Webkit) */
+::-webkit-scrollbar {
+  background-color: var(--theme-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--theme-text-muted);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-text-secondary);
+}
+
+/* 테마 적용 클래스 */
+.bm-card {
+  background: var(--theme-bg-main);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 4px 14px var(--theme-shadow);
+}
+
+.bm-card__header {
+  background: linear-gradient(135deg, var(--theme-card-header-from) 0%, var(--theme-card-header-to) 100%);
+  color: #ffffff;
+}
+
+/* 칩/뱃지 */
+.chip--mint,
+.chip--dark {
+  background: var(--theme-chip-bg);
+  color: var(--theme-chip-text);
+  border-color: var(--theme-chip-border);
+}
+
+/* 데스크탑 카드 */
+.dm-card {
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-main);
+  box-shadow: 0 4px 14px var(--theme-shadow);
+}
+
+.dm-crumb {
+  color: var(--theme-text-secondary);
+}
+
+.dm-row__left {
+  color: var(--theme-text-secondary);
+}
+
+.dm-row__value {
+  color: var(--theme-text-primary);
+}
+
+/* 연락처 카드 */
+.phone-card {
+  border: 1px solid var(--theme-border-hover);
+  background: var(--theme-primary-lighter);
+  box-shadow: 0 2px 10px var(--theme-shadow);
+}
+
+.phone-card__left {
+  color: var(--theme-icon-primary);
+}
+
+.phone-card__number {
+  color: var(--theme-text-primary);
+}
+
+/* 스타일 선택 버튼 */
+.style-btn.active {
+  border-color: var(--theme-primary);
+  background: var(--theme-primary-light);
+  color: var(--theme-primary);
+}
+
+/* 알림, 경고 박스 */
+.alert {
+  background-color: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border-light) !important;
+  color: var(--theme-text-primary) !important;
+}
+

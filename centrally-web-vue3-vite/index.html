@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=360">
+    <!-- <meta name="theme-color" content="#71b1e9"> -->
+    <meta name="theme-color" content="#004497">
+    <!-- <meta name="format-detection" content="telephone=no, email=no"> -->
+    <link rel="icon" href="/favicon.ico">
+    <title>CENTRALLY_SYSTEM</title>
+    <script>
+      // localStorage 및 URL 체크하여 테마 즉시 적용 (깜빡임 방지)
+      // head에서 실행되므로 documentElement(html)를 사용
+      (function() {
+        const path = window.location.hash.toLowerCase();
+        const alwaysLightPaths = ['#/login', '#/join', '#/guide'];
+        
+        let theme = 'light'; // 기본값
+        
+        // 로그인/회원가입/가이드 페이지는 무조건 light
+        if (alwaysLightPaths.some(p => path.startsWith(p))) {
+          theme = 'light';
+        } else {
+          // 로그인 여부 확인
+          let isAuthenticated = false;
+          try {
+            const authStore = localStorage.getItem('auth');
+            if (authStore) {
+              const parsed = JSON.parse(authStore);
+              isAuthenticated = parsed?.isAuthenticated === true;
+            }
+          } catch (e) {
+            // localStorage 읽기 실패 시 비로그인으로 간주
+          }
+          
+          // 비로그인 상태면 무조건 light
+          if (!isAuthenticated) {
+            theme = 'light';
+          } else {
+            // 로그인 상태일 때만 hrm store의 테마 설정 적용
+            try {
+              const hrmStore = localStorage.getItem('hrm');
+              if (hrmStore) {
+                const parsed = JSON.parse(hrmStore);
+                const infoMobileStyle = parsed?.myProfile?.infoMobileStyle;
+                theme = (infoMobileStyle === 'dark') ? 'dark' : 'light';
+              }
+            } catch (e) {
+              // localStorage 읽기 실패 시 기본 light 유지
+            }
+          }
+        }
+        
+        // html에 data-theme 속성 적용 (CSS에서 배경색 자동 적용됨)
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+      
+      function setViewport() {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (window.innerWidth < 360) {
+          viewport.setAttribute('content', 'width=360, initial-scale=' + (window.innerWidth / 360));
+        } else {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+        }
+      }
+      
+      window.addEventListener('resize', setViewport);
+      document.addEventListener('DOMContentLoaded', setViewport);
+    </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <style>
+      /* CSS 로드 전 초기 테마 설정 - 깜빡임 방지 */
+      html {
+        background-color: #ffffff !important;
+      }
+      
+      html[data-theme="dark"] {
+        background-color: #1a1a1a !important;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff !important;
+        color: #1f2937;
+      }
+      
+      body[data-theme="light"],
+      html[data-theme="light"] body {
+        background-color: #ffffff !important;
+        color: #1f2937;
+      }
+      
+      body[data-theme="dark"],
+      html[data-theme="dark"] body {
+        background-color: #1a1a1a !important;
+        color: #e5e7eb;
+      }
+      
+      #app {
+        min-height: 100vh;
+        background-color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // body가 파싱된 직후 즉시 테마 적용
+      const theme = document.documentElement.getAttribute('data-theme') || 'light';
+      document.body.setAttribute('data-theme', theme);
+    </script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

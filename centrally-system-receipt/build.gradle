@@ -1,0 +1,112 @@
+plugins {
+    // Java 플러그인: 자바 애플리케이션 빌드를 위한 기본 플러그인
+    id 'java'
+    
+    // Spring Boot 플러그인: Spring Boot 애플리케이션의 자동 구성 및 실행 지원
+    id 'org.springframework.boot' version '3.2.9'
+    
+    // Spring Dependency Management 플러그인: Maven BOM과 유사하게 의존성 버전 관리를 도와줌
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.centrally.receipt'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        // Java 버전 17을 사용하도록 설정
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        // compileOnly 설정이 annotationProcessor에 의존하도록 확장
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    // Maven Central 저장소를 사용하여 의존성을 다운로드
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        // Spring Cloud BOM을 가져와 Spring Cloud 관련 의존성 버전을 일괄 관리
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.0"
+    }
+}
+
+dependencies {    
+
+	implementation 'net.coobird:thumbnailator:0.4.20'
+
+	// Mail 
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	// Excel Download
+	implementation 'org.apache.poi:poi-ooxml:5.4.1'
+
+    // centrally-system-core 모듈에 대한 의존성 추가
+    // implementation project(':centrally-system-core')
+    implementation 'com.centrally.core:centrally-system-core:0.0.1-SNAPSHOT'
+    
+	// Kafka 설정
+    implementation 'org.springframework.kafka:spring-kafka'
+    
+    // Spring Cloud Config Client 의존성
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    
+    // Spring Boot Starter Data JPA:
+    // JPA를 사용한 데이터베이스 액세스 및 ORM 관련 기능 제공
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    
+    // Spring Boot Starter Web:
+    // Spring MVC 기반의 웹 애플리케이션 개발을 위한 의존성 (내부에 Tomcat, Spring MVC, Jackson 등 포함)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	
+	// Bean Validation (Jakarta Validation + Hibernate Validator)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    // Lombok:
+    // 코드 간결화를 위한 라이브러리. compileOnly로 지정해 컴파일 시점에만 필요
+    compileOnly 'org.projectlombok:lombok'
+    
+    // PostgreSQL JDBC 드라이버:
+    // PostgreSQL 데이터베이스와의 연결을 위해 runtime 시점에 필요한 드라이버
+    runtimeOnly 'org.postgresql:postgresql'
+    
+    // Lombok Annotation Processor:
+    // Lombok 애노테이션을 처리하기 위한 Annotation Processor
+    annotationProcessor 'org.projectlombok:lombok'
+    
+    // Spring Boot Starter Test:
+    // 스프링 부트 애플리케이션 테스트를 위한 의존성 (JUnit, Mockito, AssertJ 등 포함)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    // Spring Security Test:
+    // 스프링 시큐리티 관련 테스트를 지원하는 의존성
+    testImplementation 'org.springframework.security:spring-security-test'
+    
+    // JUnit Platform Launcher:
+    // JUnit 5 테스트 실행을 위한 런처 라이브러리
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    
+    // Spring Cloud Eureka Client:
+    // Eureka를 통한 서비스 등록, 디스커버리 및 로드밸런싱 기능 제공 (클라이언트 역할)
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    
+    // Spring Boot Actuator: 모니터링 및 관리 엔드포인트 제공
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    
+    // Micrometer Prometheus: Prometheus 형식의 메트릭 노출
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+}
+
+tasks.withType(JavaCompile) {
+    // 소스 파일의 인코딩을 UTF-8로 지정하여 문자 인코딩 문제 방지
+    options.encoding = 'UTF-8'
+}

@@ -1,0 +1,2 @@
+rootProject.name = 'centrally-system-auth'
+includeBuild '../centrally-system-core'

@@ -1,0 +1,23 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 페이지네이션 기본 스타일 (Pagination Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.pagination {
+  background-color: var(--theme-body-bg);
+}
+
+.page-link {
+  background-color: var(--theme-bg-main) !important;
+  border-color: var(--theme-border-light) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+.page-link:hover {
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+.page-item.active .page-link {
+  background-color: var(--theme-primary) !important;
+  border-color: var(--theme-primary) !important;
+}
+

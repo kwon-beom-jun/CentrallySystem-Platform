@@ -1,0 +1,52 @@
+/* ═══════════════════════════════════════════════════════════════
+ * FirstSidebar - Dark Mode Styles
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 다크모드 스타일 */
+body[data-theme="dark"] .first-sidebar {
+  background: #252525;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] .sidebar-item {
+  color: #9ca3af;
+}
+
+body[data-theme="dark"] .sidebar-item:hover {
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .sidebar-item.active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .sidebar-item:hover::after {
+  background: #3a3a3a !important;
+  color: #ffffff;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body[data-theme="dark"] .theme-toggle-button {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+body[data-theme="dark"] .theme-toggle-button:hover {
+  background: #F39C12 !important;
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .company-info-button {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+body[data-theme="dark"] .company-info-button:hover {
+  background: #16A085;
+  color: #ffffff;
+}
+
+body[data-theme="dark"] .company-info-button.active {
+  background: #16A085;
+}

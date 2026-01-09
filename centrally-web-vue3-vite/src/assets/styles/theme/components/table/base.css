@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 테이블 기본 스타일 (Table Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.table,
+#dataTable,
+table {
+  background-color: var(--theme-table-bg) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+.table thead th,
+#dataTable thead th,
+table thead th {
+  background-color: var(--theme-table-header-bg) !important;
+  border-color: var(--theme-table-border) !important;
+  color: var(--theme-table-header-text) !important;
+}
+
+.table tbody td,
+#dataTable tbody td,
+table tbody td {
+  border-color: var(--theme-table-border) !important;
+}
+
+.table tbody td:not([class*="text-"]),
+#dataTable tbody td:not([class*="text-"]),
+table tbody td:not([class*="text-"]) {
+  background-color: var(--theme-table-placeholder-bg) !important;
+  /* color: var(--theme-text-primary) !important; */
+}
+
+.table tbody tr:hover,
+#dataTable tbody tr:hover td,
+table tbody tr:hover td {
+  background-color: var(--theme-table-row-hover) !important;
+}
+
+.table tbody tr:nth-child(even),
+.table tbody tr:nth-child(even) td,
+#dataTable tbody tr:nth-child(even),
+#dataTable tbody tr:nth-child(even) td,
+table tbody tr:nth-child(even),
+table tbody tr:nth-child(even) td,
+tbody tr:nth-child(even),
+tbody tr:nth-child(even) td {
+  background-color: var(--theme-table-row-even) !important;
+}
+
+.table tbody tr:nth-child(even) td:not([class*="text-"]),
+#dataTable tbody tr:nth-child(even) td:not([class*="text-"]),
+table tbody tr:nth-child(even) td:not([class*="text-"]),
+tbody tr:nth-child(even) td:not([class*="text-"]) {
+  /* color: var(--theme-text-primary) !important; */
+}
+
+/* placeholder-row, no-data-row */
+.placeholder-row,
+.no-data-row,
+tr.placeholder-row,
+tr.no-data-row {
+  background-color: var(--theme-table-bg) !important;
+}
+
+.placeholder-row td,
+.no-data-row td,
+tr.placeholder-row td,
+tr.no-data-row td {
+  background-color: var(--theme-table-bg) !important;
+  color: var(--theme-text-muted) !important;
+}
+

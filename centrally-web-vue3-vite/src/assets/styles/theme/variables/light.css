@@ -1,0 +1,117 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 라이트 테마 변수 (Light Theme Variables)
+ * ═══════════════════════════════════════════════════════════════ */
+
+:root,
+body[data-theme="light"] {
+  /* 주요 색상 */
+  --theme-primary: #26a3ff;
+  --theme-primary-dark: #0077e6;
+  --theme-primary-light: #e6f2ff;
+  --theme-primary-lighter: #f9fcff;
+  
+  /* 배경 및 표면 */
+  --theme-bg-main: #ffffff;
+  --theme-bg-secondary: #f8fafc;
+  --theme-bg-tertiary: #f1f5f9;
+  --theme-surface: #ffffff;
+  --theme-body-bg: #F9FAFB;
+  
+  /* 테두리 */
+  --theme-border: #e0e0e0;
+  --theme-border-light: #e5e7eb;
+  --theme-border-blue: #bfdeff;
+  --theme-border-dark: #d1d5db;
+  --theme-border-hover: #cfe6ff;
+  
+  /* 그림자 */
+  --theme-shadow: rgba(0, 140, 255, 0.12);
+  --theme-shadow-hover: rgba(0, 140, 255, 0.18);
+  --theme-shadow-sm: rgba(0, 0, 0, 0.05);
+  --theme-shadow-md: rgba(0, 0, 0, 0.1);
+  --theme-shadow-lg: rgba(0, 0, 0, 0.15);
+  
+  /* 텍스트 */
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #334155;
+  --theme-text-tertiary: #475569;
+  --theme-text-muted: #d9d9d9;
+  --theme-text-disabled: #303947;
+  --theme-text-inverse: #ffffff;
+  
+  /* 칩/뱃지 */
+  --theme-chip-bg: #eaf4ff;
+  --theme-chip-text: #0b6bcb;
+  --theme-chip-border: #cfe6ff;
+  
+  /* 카드 헤더 */
+  --theme-card-header-from: #26a3ff;
+  --theme-card-header-to: #0077e6;
+  
+  /* 아이콘 */
+  --theme-icon-primary: #0b6bcb;
+  --theme-icon-secondary: #5a6b7b;
+  --theme-icon-muted: #94a3b8;
+  
+  /* 모달 */
+  --theme-modal-bg: #ffffff;
+  --theme-modal-overlay: rgba(0, 0, 0, 0.5);
+  --theme-modal-border: #e5e7eb;
+  
+  /* 버튼 */
+  --theme-btn-primary-bg: #007bff;
+  --theme-btn-primary-hover: #0056b3;
+  --theme-btn-secondary-bg: #6c757d;
+  --theme-btn-gray-bg: #58606D;
+  --theme-btn-red-bg: #dc3545;
+  --theme-btn-green-bg: #28a745;
+  --theme-btn-disabled-bg: #e9ecef;
+  --theme-btn-disabled-text: #adb5bd;
+  
+  /* 테이블 */
+  /* --theme-table-bg: #ffffff; */
+  --theme-table-bg: linear-gradient(135deg, #fafafa, #fff);
+  --theme-table-placeholder-bg: linear-gradient(135deg, #f9fafb, #f3f4f6);
+  --theme-table-header-bg: ;
+  --theme-table-header-text: #3d3d3d;
+  --theme-table-border: #e5e7eb;
+  --theme-table-row-hover: #e7f1ff;
+  --theme-table-row-selected: #dbeafe;
+  --theme-table-row-even: #f9fafb;
+  
+  /* 입력 필드 */
+  --theme-input-bg: #ffffff;
+  --theme-input-border: #d1d5db;
+  --theme-input-focus-border: #3b82f6;
+  --theme-input-disabled-bg: #f7f7f7;
+  --theme-input-placeholder: #9ca3af;
+  
+  /* 헤더/네비게이션 */
+  --theme-header-bg: #ffffff;
+  --theme-header-border: #e5e7eb;
+  --theme-nav-bg: #ffffff;
+  --theme-nav-item-hover: #f3f4f6;
+  --theme-nav-item-active: #eff6ff;
+  
+  /* 사이드바 */
+  --theme-sidebar-bg: #ffffff;
+  --theme-sidebar-border: #e5e7eb;
+  --theme-sidebar-item-hover: #f3f4f6;
+  
+  /* 카드/서브메뉴 */
+  --theme-card-bg: #ffffff;
+  --theme-submenu-bg: #f8f9fa;
+  --theme-bg-hover: #f7fafc;
+
+  /* 회색 단계 (연한 → 진한) */
+  --theme-gray-100: #f3f4f6;
+  --theme-gray-200: #e5e7eb;
+  --theme-gray-300: #d1d5db;
+  --theme-gray-400: #9ca3af;
+  --theme-gray-500: #6b7280;
+  --theme-gray-600: #4b5563;
+  --theme-gray-700: #374151;
+  --theme-gray-800: #1f2937;
+  --theme-gray-900: #111827;
+}
+

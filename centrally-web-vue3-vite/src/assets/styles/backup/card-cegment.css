@@ -1,0 +1,52 @@
+/* ──────────────────────────────────────────────
+ * 카드 디자인: 세그먼트 티켓 (체크박스 보정 포함)
+────────────────────────────────────────────── */
+
+@media (max-width: 650px) {
+  /* 1. tr = 티켓 카드 */
+  .card-default.card-enabled .table tbody tr {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(92, 101, 112, 0.15);
+    border-radius: 10px;
+    padding: 18px 20px 18px 85px;
+    transition: transform 0.2s ease;
+  }
+  .card-default.card-enabled .table tbody tr:hover {
+    transform: scale(1.02);
+  }
+
+  /* 2. 왼쪽 스텁(Stub) 디자인 - 사선 경계 */
+  .card-default.card-enabled .table tbody tr::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75px; /* 스텁 영역 너비 */
+    height: 100%;
+    background-color: #2c3e50; /* 다크 네이비 색상 */
+    border-radius: 10px 0 0 10px;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  }
+
+  /* 3. 내부 셀(라인) 레이아웃 */
+  .card-default.card-enabled .table tbody td {
+    padding: 2px 0 !important;
+    font-size: 0.78rem;
+    white-space: normal !important;
+    background: transparent !important;
+    position: relative; /* 내용이 스텁 위로 오도록 */
+  }
+
+  /* ✨ 4. 체크박스 있을 때 레이아웃 보정 (추가된 부분) */
+  .card-default.card-enabled .table tbody tr:has(> .mobile-checkbox) {
+    padding-left: 85px !important;
+  }
+  .card-default.card-enabled .table tbody td.mobile-checkbox {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    width: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+}

@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 통계 대시보드 다크모드 오버라이드 (Statistics Dashboard Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .v-row-chart {
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .floating-nav {
+  background-color: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .floating-nav a {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .floating-nav .nav-title-label {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .employees-data {
+  background-color: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .divider-with-gap {
+  border-color: var(--theme-border) !important;
+}
+
+/* ApexCharts 텍스트 */
+body[data-theme="dark"] .apexcharts-text,
+body[data-theme="dark"] .apexcharts-text tspan {
+  fill: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .apexcharts-legend-text {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .apexcharts-xaxis-label,
+body[data-theme="dark"] .apexcharts-yaxis-label {
+  fill: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .apexcharts-tooltip {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .apexcharts-tooltip-title {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .apexcharts-gridline {
+  stroke: var(--theme-border) !important;
+}
+

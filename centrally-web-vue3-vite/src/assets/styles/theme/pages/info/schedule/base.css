@@ -1,0 +1,838 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 일정 캘린더 페이지 기본 스타일 (Schedule Calendar Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+.calendar-wrapper {
+  margin-bottom: 20px;
+}
+
+.calendar-header {
+  margin-bottom: 12px;
+}
+
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background-color: var(--theme-bg-main);
+  border: 1px solid var(--theme-border);
+  border-radius: 4px;
+  flex-wrap: nowrap;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 30px;
+  border: 1px solid var(--theme-border);
+  background-color: var(--theme-bg-main);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--theme-text-secondary);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-btn:hover {
+  background-color: var(--theme-bg-secondary);
+  border-color: var(--theme-border-dark);
+  color: var(--theme-text-primary);
+}
+
+.nav-btn:active {
+  background-color: var(--theme-bg-tertiary);
+}
+
+.nav-btn i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.current-month {
+  flex: 0 0 auto;
+  margin: 0 6px;
+}
+
+.month-year {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--theme-text-primary);
+  white-space: nowrap;
+}
+
+.today-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  min-width: 50px;
+  height: 32px;
+  white-space: nowrap;
+  position: relative;
+  margin-left: 16px;
+}
+
+.today-btn::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 26px;
+  background-color: var(--theme-border);
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--theme-primary);
+  background-color: var(--theme-primary);
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.create-btn:hover {
+  background-color: var(--theme-primary-dark);
+  border-color: var(--theme-primary-dark);
+}
+
+.create-btn:active {
+  background-color: var(--theme-primary-dark);
+  border-color: var(--theme-primary-dark);
+}
+
+.create-btn i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background-color: var(--theme-bg-main);
+  border: 1px solid var(--theme-border);
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.filter-section .default-select,
+.filter-section .user-search-dropdown {
+  flex: 0 0 auto;
+}
+
+.assignee-search-wrapper {
+  margin-left: auto;
+}
+
+.view-section {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.calendar-navigation .view-section {
+  margin-left: 0;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--theme-border);
+  background-color: var(--theme-bg-main);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--theme-text-secondary);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.view-toggle-btn:hover {
+  background-color: var(--theme-bg-secondary);
+  border-color: var(--theme-border-dark);
+  color: var(--theme-text-primary);
+}
+
+.view-toggle-btn.active {
+  background-color: var(--theme-primary);
+  border-color: var(--theme-primary);
+  color: #ffffff;
+}
+
+.view-toggle-btn.active:hover {
+  background-color: var(--theme-primary-dark);
+  border-color: var(--theme-primary-dark);
+}
+
+.view-toggle-btn i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.list-view-wrapper {
+  margin-bottom: 12px;
+}
+
+.list-view-wrapper .calendar-controls {
+  margin-bottom: 12px;
+}
+
+.calendar-container {
+  height: clamp(800px, calc(800px + (100vw - 1200px) * 0.25), 900px);
+  min-height: 800px;
+  max-height: 900px;
+  border: 1.5px solid var(--theme-border);
+  border-radius: 8px;
+}
+
+/* Toast UI Calendar more events 팝업 최소 높이 설정 */
+.calendar-container .toastui-calendar-see-more-container {
+  min-height: 200px !important;
+  z-index: 1000 !important;
+}
+
+.calendar-container .toastui-calendar-see-more {
+  min-height: 200px !important;
+  z-index: 1000 !important;
+}
+
+.calendar-container .toastui-calendar-month-more-list {
+  min-height: calc(200px - 68px) !important;
+}
+
+/* 그리드 선택 영역 숨기기 (빈 공간 드래그 시 파란색 표시 방지) */
+.calendar-container .toastui-calendar-grid-selection,
+.calendar-container .toastui-calendar-accumulated-grid-selection {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* 일자 셀 크기 줄이기 */
+.calendar-container .toastui-calendar-daygrid-cell {
+  min-height: 80px !important;
+  font-size: 0.8rem !important;
+}
+
+/* 날짜 숫자 크기 줄이기 - 모든 가능한 선택자 사용 */
+.calendar-container .toastui-calendar-daygrid-date,
+.calendar-container .toastui-calendar-daygrid-date-number,
+.calendar-container .toastui-calendar-month-daygrid-date,
+.calendar-container .toastui-calendar-month-daygrid-date-number,
+.calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-daygrid-date,
+.calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-daygrid-date-number {
+  font-size: 0.8rem !important;
+  padding: 2px 4px !important;
+}
+
+/* 요일 이름 전체 표시 (첫 글자만이 아닌) */
+.calendar-container .toastui-calendar-template-monthDayName {
+  width: auto !important;
+  min-width: auto !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+}
+
+.toastui-calendar-day-names.toastui-calendar-month {
+  padding: 0 !important;
+}
+
+/* 요일 컨테이너 중앙 정렬 */
+.calendar-container .toastui-calendar-day-name-item,
+.calendar-container .toastui-calendar-day-name-container {
+  text-align: center !important;
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+/* 일자 셀 내부의 모든 요소 */
+.calendar-container .toastui-calendar-daygrid-cell > *,
+.calendar-container .toastui-calendar-daygrid-cell > div,
+.calendar-container .toastui-calendar-daygrid-cell > span,
+.calendar-container .toastui-calendar-daygrid-cell div,
+.calendar-container .toastui-calendar-daygrid-cell span,
+.calendar-container .toastui-calendar-daygrid-cell p {
+  font-size: 0.8rem !important;
+}
+
+/* 월간 뷰의 날짜 표시 - 더 구체적으로 */
+.calendar-container .toastui-calendar-month .toastui-calendar-daygrid-cell,
+.calendar-container .toastui-calendar-month .toastui-calendar-daygrid-date,
+.calendar-container .toastui-calendar-month .toastui-calendar-daygrid-date-number,
+.calendar-container .toastui-calendar-month .toastui-calendar-daygrid-cell * {
+  font-size: 0.8rem !important;
+}
+
+/* 인라인 스타일이 있어도 적용되도록 */
+.calendar-container .toastui-calendar-daygrid-cell[style*="font-size"] {
+  font-size: 0.8rem !important;
+}
+
+/* 모든 텍스트 노드 타겟팅 */
+.calendar-container .toastui-calendar-daygrid-cell * {
+  font-size: 0.8rem !important;
+}
+
+/* 일정 막대 더 얇게 */
+.calendar-container .toastui-calendar-weekday-event {
+  height: 20px !important;
+  line-height: 20px !important;
+  margin: 1px 4px !important;
+  border-radius: 2px !important;
+}
+
+/* 일정 막대 내부 텍스트 색상 */
+.calendar-container .toastui-calendar-weekday-event-title,
+.calendar-container .toastui-calendar-template-allday,
+.calendar-container .toastui-calendar-weekday-event span {
+  color: #ffffff !important;
+}
+
+/* 일정 막대 간격 1px로 줄이기 */
+.calendar-container .toastui-calendar-weekday-event + .toastui-calendar-weekday-event {
+  margin-top: 1px !important;
+}
+
+.calendar-container .toastui-calendar-weekday-event-block + .toastui-calendar-weekday-event-block {
+  margin-top: 1px !important;
+}
+
+/* 일정 막대 컨테이너 내부 간격 조정 */
+.calendar-container .toastui-calendar-weekday-event-block {
+  margin-bottom: 1px !important;
+  gap: 1px !important;
+}
+
+.calendar-container .toastui-calendar-weekday-event-block > * {
+  margin-bottom: 1px !important;
+}
+
+/* 일정 막대가 있는 셀 내부 간격 조정 */
+.calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-weekday-event-block {
+  gap: 1px !important;
+  margin-bottom: 1px !important;
+}
+
+.calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-weekday-event {
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+}
+
+/* 일정 막대들 사이 간격 */
+.calendar-container .toastui-calendar-weekday-event-block .toastui-calendar-weekday-event {
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+}
+
+/* Toast UI Calendar 상세 팝업 z-index 설정 */
+.toastui-calendar-popup-container,
+.toastui-calendar-detail-container {
+  z-index: 1001 !important;
+}
+
+/* Toast UI Calendar 상세 팝업 내부 텍스트 폰트 굵기 */
+.toastui-calendar-detail-container,
+.toastui-calendar-detail-container *,
+.toastui-calendar-popup-container .toastui-calendar-detail-container,
+.toastui-calendar-popup-container .toastui-calendar-detail-container * {
+  font-weight: 500 !important;
+}
+
+/* 동그라미 아이콘과 "일정" 텍스트가 있는 detail-item 숨기기 */
+.toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+.toastui-calendar-popup-container .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+.toastui-calendar-detail-container .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+body .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+body .toastui-calendar-popup-container .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+body .toastui-calendar-detail-container .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+html body .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+html body .toastui-calendar-popup-container .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot),
+html body .toastui-calendar-detail-container .toastui-calendar-detail-item:has(.toastui-calendar-calendar-dot) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* 일정 유형과 설명 사이에 실선 추가 (JavaScript에서 동적으로 제어 - 기본값은 없음) */
+.toastui-calendar-detail-item:has(.toastui-calendar-ic-state-b) {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 설명 아이템 위쪽 여백 조정 */
+.toastui-calendar-detail-item-separate {
+  padding-top: 8px !important;
+  margin-top: 0 !important;
+}
+
+/* 상세 팝업의 담당자 정보 스타일 */
+.toastui-calendar-detail-item,
+.toastui-calendar-detail-item-indent {
+  font-weight: 500 !important;
+}
+
+.calendar-container .toastui-calendar-weekday-event-block {
+  height: 20px !important;
+  line-height: 20px !important;
+}
+
+/* 일정 제목 글자 크기 줄이기 */
+.calendar-container .toastui-calendar-weekday-event-title {
+  font-size: 0.75rem !important;
+  line-height: 20px !important;
+  padding: 0 4px !important;
+}
+
+.calendar-container .toastui-calendar-template-allday span {
+  font-size: 0.75rem !important;
+  line-height: 20px !important;
+}
+
+/* 일정 템플릿 스타일 */
+.calendar-container .toastui-calendar-template-allday {
+  font-size: 0.75rem !important;
+  line-height: 20px !important;
+  padding: 0 4px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* 일정 막대 내부의 리사이즈 핸들 */
+.calendar-container .toastui-calendar-weekday-event .toastui-calendar-icon-handle-y,
+.calendar-container .toastui-calendar-weekday-event .toastui-calendar-ic-handle-y,
+.calendar-container .toastui-calendar-weekday-event [class*="handle-y"],
+.calendar-container .toastui-calendar-weekday-event [class*="resize-handle"],
+.calendar-container .toastui-calendar-weekday-event-block .toastui-calendar-icon-handle-y,
+.calendar-container .toastui-calendar-weekday-event-block .toastui-calendar-ic-handle-y {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: ew-resize !important;
+  position: absolute !important;
+  right: 0px !important;
+  z-index: 10 !important;
+  transform: translateY(-50%) !important;
+  top: 50% !important;
+}
+
+/* 리사이즈 핸들 아이콘 - 항상 표시 */
+.calendar-container .toastui-calendar-weekday-event:hover .toastui-calendar-icon-handle-y,
+.calendar-container .toastui-calendar-weekday-event .toastui-calendar-icon-handle-y,
+.calendar-container .toastui-calendar-weekday-event:hover .toastui-calendar-ic-handle-y,
+.calendar-container .toastui-calendar-weekday-event .toastui-calendar-ic-handle-y {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: ew-resize !important;
+}
+
+/* 리사이즈 핸들 아이콘 내부 요소 */
+.calendar-container .toastui-calendar-icon-handle-y i,
+.calendar-container .toastui-calendar-ic-handle-y i,
+.calendar-container .toastui-calendar-icon-handle-y svg,
+.calendar-container .toastui-calendar-ic-handle-y svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 리사이즈 핸들 아이콘 크기 키우기 */
+.calendar-container .toastui-calendar-icon-handle-y,
+.calendar-container .toastui-calendar-ic-handle-y {
+  font-size: 16px !important;
+  line-height: 20px !important;
+}
+
+/* 리사이즈 핸들 내부의 점선 표시 크기 키우기 */
+.calendar-container .toastui-calendar-icon-handle-y::before,
+.calendar-container .toastui-calendar-ic-handle-y::before,
+.calendar-container .toastui-calendar-icon-handle-y::after,
+.calendar-container .toastui-calendar-ic-handle-y::after {
+  font-size: 16px !important;
+  line-height: 20px !important;
+}
+
+/* 리사이즈 핸들 아이콘 내부 요소 크기 키우기 */
+.calendar-container .toastui-calendar-icon-handle-y i,
+.calendar-container .toastui-calendar-ic-handle-y i,
+.calendar-container .toastui-calendar-icon-handle-y svg,
+.calendar-container .toastui-calendar-ic-handle-y svg {
+  font-size: 16px !important;
+}
+
+.list-view {
+  margin-top: 20px;
+}
+
+/* 날짜 영역 크기 줄이기 */
+.calendar-container .toastui-calendar-grid-cell-date,
+.calendar-container .toastui-calendar-weekday-grid-date {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 데스크탑(650px 이상)에서 일정 막대 텍스트가 말줄임표에 닿기 전에 잘리도록 */
+@media (min-width: 651px) {
+  .calendar-container .toastui-calendar-template-allday {
+    padding-right: 8px !important;
+  }
+  
+  .calendar-container .toastui-calendar-template-allday span {
+    display: inline-block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .calendar-navigation {
+    padding: 6px 10px;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .nav-btn {
+    width: 26px;
+    height: 32px;
+  }
+  
+  .nav-btn i {
+    font-size: 14px;
+  }
+  
+  .month-year {
+    font-size: 0.65rem;
+    margin: 0 4px;
+  }
+  
+  .today-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    min-width: 45px;
+    height: 32px;
+    white-space: nowrap;
+  }
+  
+  .calendar-controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  
+  .filter-section {
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .filter-section .default-select,
+  .filter-section .user-search-dropdown {
+    width: 100%;
+  }
+
+  .assignee-search-wrapper {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .calendar-navigation .view-section {
+    width: auto;
+  }
+
+  .view-section {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .view-toggle-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .view-toggle-btn i {
+    font-size: 16px;
+  }
+  
+  .create-btn {
+    font-size: 0.75rem;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .create-btn i {
+    font-size: 14px;
+  }
+  
+  .create-btn span {
+    display: none;
+  }
+
+  .toastui-calendar-icon {
+    width: 7px !important;
+  }
+  
+  /* .calendar-container {
+    height: 400px;
+  } */
+
+  .calendar-container {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+    border: 1.5px solid var(--theme-border);
+    border-radius: 8px;
+  }
+
+  /* 요일 이름 전체 표시 (첫 글자만이 아닌) */
+  .calendar-container .toastui-calendar-template-monthDayName {
+    font-weight: 500 !important;
+    font-size: 0.685rem !important;
+  }
+
+  /* 일정 막대가 잘리지 않도록 - 모든 레벨에서 */
+  .calendar-container .toastui-calendar-weekday-events {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 25px !important;
+    max-height: none !important;
+  }
+
+  /* 일정 막대 블록이 잘리지 않도록 */
+  .calendar-container .toastui-calendar-weekday-event-block {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    margin-top: 1px !important;
+  }
+
+  /* 날짜 숫자 강제로 줄이기 - 모든 선택자 사용 */
+  .calendar-container .toastui-calendar-daygrid-date,
+  .calendar-container .toastui-calendar-daygrid-date-number,
+  .calendar-container .toastui-calendar-month-daygrid-date,
+  .calendar-container .toastui-calendar-month-daygrid-date-number,
+  .calendar-container .toastui-calendar-weekday-grid-date,
+  .calendar-container .toastui-calendar-grid-cell-date,
+  .calendar-container .toastui-calendar-template-monthGridHeader,
+  .calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-weekday-grid-date,
+  .calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-grid-cell-date,
+  .calendar-container .toastui-calendar-grid-cell-header .toastui-calendar-grid-cell-date,
+  .calendar-container .toastui-calendar-grid-cell-header .toastui-calendar-weekday-grid-date,
+  .calendar-container span.toastui-calendar-weekday-grid-date,
+  .calendar-container span.toastui-calendar-grid-cell-date {
+    font-size: 0.6rem !important;
+    padding: 1px !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+  }
+
+  /* 종일 일정도 높이 줄이기 */
+  .calendar-container .toastui-calendar-weekday-event:has(.toastui-calendar-template-allday) {
+    height: 14px !important;
+    min-height: 14px !important;
+    line-height: 14px !important;
+  }
+
+  /* 종일 일정 템플릿 높이 줄이기 */
+  .calendar-container .toastui-calendar-template-allday {
+    height: 14px !important;
+    min-height: 14px !important;
+    line-height: 14px !important;
+    font-size: 0.5rem !important;
+    padding: 0 2px !important;
+  }
+
+  /* 종일 일정 내부 span 폰트 사이즈 줄이기 */
+  .calendar-container .toastui-calendar-template-allday span {
+    font-size: 0.5rem !important;
+    line-height: 15px !important;
+  }
+
+  /* 날짜 영역 크기 줄이기 */
+  .calendar-container .toastui-calendar-grid-cell-date,
+  .calendar-container .toastui-calendar-weekday-grid-date {
+    width: 15px !important;
+    height: 15px !important;
+    min-width: 15px !important;
+    min-height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* 현재일일 때 일자 숫자 중앙 정렬 */
+  .calendar-container .toastui-calendar-weekday-grid-date.toastui-calendar-weekday-grid-date-decorator,
+  .calendar-container .toastui-calendar-grid-cell-date.toastui-calendar-grid-cell-date-decorator,
+  .calendar-container .toastui-calendar-grid-cell-date .toastui-calendar-weekday-grid-date.toastui-calendar-weekday-grid-date-decorator,
+  .calendar-container .toastui-calendar-daygrid-cell .toastui-calendar-weekday-grid-date.toastui-calendar-weekday-grid-date-decorator {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* 일정 막대 블록 위치 조정 - 헤더 아래로 (Toast UI Calendar가 자동으로 top 값을 계산하도록 함) */
+  .calendar-container .toastui-calendar-weekday-event-block {
+    height: auto !important;
+    min-height: 16px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: absolute !important;
+    margin-bottom: -5px !important;
+  }
+
+  /* 일정 막대 블록 내부 일정 */
+  .calendar-container .toastui-calendar-weekday-event-block .toastui-calendar-weekday-event {
+    position: relative !important;
+    margin-bottom: -5px !important;
+  }
+
+  /* 일정 제목 글자 크기 줄이기 */
+  .calendar-container .toastui-calendar-weekday-event-title {
+    font-size: 0.5rem !important;
+    line-height: 14px !important;
+    padding: 0 2px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  /* more 버튼에 + 아이콘 추가 (CSS로 - 하나만, 버튼에만) */
+  .calendar-container .toastui-calendar-daygrid-more-events.converted-plus-icon::after,
+  .calendar-container .toastui-calendar-month-daygrid-more-events.converted-plus-icon::after,
+  .calendar-container .toastui-calendar-grid-cell-more-events.converted-plus-icon::after,
+  .calendar-container .toastui-calendar-weekday-grid-more-events.converted-plus-icon::after,
+  .calendar-container button.toastui-calendar-grid-cell-more-events.converted-plus-icon::after {
+    content: '+' !important;
+    font-size: 10px !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+    color: white !important;
+    display: block !important;
+    visibility: visible !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1 !important;
+    z-index: 11 !important;
+  }
+
+  /* span의 after/before는 완전히 제거 */
+  .calendar-container .toastui-calendar-daygrid-more-events.converted-plus-icon span::after,
+  .calendar-container .toastui-calendar-daygrid-more-events.converted-plus-icon span::before,
+  .calendar-container .toastui-calendar-month-daygrid-more-events.converted-plus-icon span::after,
+  .calendar-container .toastui-calendar-month-daygrid-more-events.converted-plus-icon span::before,
+  .calendar-container .toastui-calendar-grid-cell-more-events.converted-plus-icon span::after,
+  .calendar-container .toastui-calendar-grid-cell-more-events.converted-plus-icon span::before,
+  .calendar-container .toastui-calendar-weekday-grid-more-events.converted-plus-icon span::after,
+  .calendar-container .toastui-calendar-weekday-grid-more-events.converted-plus-icon span::before,
+  .calendar-container button.toastui-calendar-grid-cell-more-events.converted-plus-icon span::after,
+  .calendar-container button.toastui-calendar-grid-cell-more-events.converted-plus-icon span::before {
+    display: none !important;
+    content: '' !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .toastui-calendar-daygrid-cell .toastui-calendar-grid-cell-header {
+    height: 20px !important;
+  }
+
+  .calendar-container .toastui-calendar-weekday-events {
+    /* margin-bottom: -5px !important; */
+  }
+
+  /* 각 셀 내에서 두 번째 줄 이후 블록들 간격 줄이기 - 첫 번째 블록 기준으로 누적 */
+  .calendar-container .toastui-calendar-weekday-events .toastui-calendar-weekday-event-block[style*="top: 57px"],
+  .calendar-container .toastui-calendar-weekday-events .toastui-calendar-weekday-event-block[style*="top:57px"] {
+    transform: translateY(-5px) !important;
+  }
+  
+  .calendar-container .toastui-calendar-weekday-events .toastui-calendar-weekday-event-block[style*="top: 83px"],
+  .calendar-container .toastui-calendar-weekday-events .toastui-calendar-weekday-event-block[style*="top:83px"] {
+    transform: translateY(-10px) !important;
+  }
+  
+  .calendar-container .toastui-calendar-weekday-events .toastui-calendar-weekday-event-block[style*="top: 109px"],
+  .calendar-container .toastui-calendar-weekday-events .toastui-calendar-weekday-event-block[style*="top:109px"] {
+    transform: translateY(-15px) !important;
+  }
+  
+  .calendar-container .toastui-calendar-weekday-event-block {
+    /* margin-bottom: -5px !important; */
+  }
+
+  /* 모바일에서 캘린더 상세 팝업 크기 축소 및 위치 조정 */
+  .toastui-calendar-popup-container {
+    transform: scale(0.8) translateY(-100%) !important;
+    transform-origin: bottom center !important;
+    margin-top: -10px !important;
+  }
+  
+  .toastui-calendar-popup-arrow-border {
+    display: none !important;
+  }
+}

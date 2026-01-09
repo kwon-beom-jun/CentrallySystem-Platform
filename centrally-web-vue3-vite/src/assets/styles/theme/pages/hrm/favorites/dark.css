@@ -1,0 +1,73 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 즐겨찾기 관리 다크모드 오버라이드 (Favorites Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .info-box {
+  background: #1e3a5f !important;
+  border-color: #2a4a70 !important;
+  color: #7dd3fc !important;
+}
+
+body[data-theme="dark"] .section-title {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .card-style-section {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .info-label {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .info-value {
+  /* background: var(--theme-bg-tertiary) !important; */
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .search-result-info {
+  background: #1e3a5f !important;
+  border-color: #2a4a70 !important;
+  color: #7dd3fc !important;
+}
+
+body[data-theme="dark"] .menu-chip {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .chip-label,
+body[data-theme="dark"] .chip-category {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .no-results {
+  background: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .favorite-item {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .menu-label {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .menu-category {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .color-button,
+body[data-theme="dark"] .delete-button {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .empty-state {
+  color: var(--theme-text-muted) !important;
+}
+

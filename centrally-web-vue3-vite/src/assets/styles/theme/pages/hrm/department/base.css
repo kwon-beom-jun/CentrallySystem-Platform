@@ -1,0 +1,12 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 부서/팀 관리 기본 스타일 (Department Management Base Styles)
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* 밝은모드: 부서 및 팀 관리 글자색 */
+body[data-theme="light"] .department-item,
+body[data-theme="light"] .team-item,
+body[data-theme="light"] .dept-name,
+body[data-theme="light"] .team-name {
+  color: var(--theme-text-secondary) !important;
+}
+

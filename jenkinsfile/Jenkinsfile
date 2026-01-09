@@ -1,0 +1,583 @@
+pipeline {
+    agent any
+    
+    tools {
+        jdk 'JDK17'
+        gradle 'Gradle-8'
+        // Node.js는 시스템에 설치된 것을 사용
+    }
+    
+    environment {
+        GRADLE_USER_HOME = '/var/lib/jenkins/.gradle'
+        ARTIFACTS_BASE_DIR = '/var/lib/jenkins/artifacts'
+        NODE_OPTIONS = '--max-old-space-size=1024'  // t3.medium 메모리 최적화
+        BUILD_ENV = 'prod'  // 빌드 환경: 'prod' 또는 'dev' (프론트엔드 .env 파일 선택용)
+        
+        // AP 서버 배포 설정
+        AP_SERVER = 'ubuntu@dummy_server_ip'  // AP 서버 주소 (실제 IP로 수정 필요)
+        SSH_KEY = '/var/lib/jenkins/.ssh/deploy-key'
+        AP_BASE_DIR = '/was/censys'
+    }
+    
+    triggers {
+        githubPush()
+    }
+    
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '5'))
+        timestamps()
+        disableConcurrentBuilds()  // 동시 빌드 방지 (메모리 절약)
+    }
+    
+    stages {
+        stage('변경 감지') {
+            steps {
+                script {
+                    echo "🔍 변경된 서비스 감지 시작..."
+                    
+                    def changedServices = []
+                    def coreChanged = false
+                    def frontendChanged = false
+                    
+                    // 서비스 목록 상수
+                    def ALL_SERVICES = ['auth', 'hrm', 'gateway', 'info', 'receipt']
+                    def ALL_SERVICES_STRING = 'auth,hrm,gateway,info,receipt'
+                    def SERVICE_PREFIXES = [
+                        'auth': 'centrally-system-auth',
+                        'hrm': 'centrally-system-hrm',
+                        'gateway': 'centrally-system-gateway',
+                        'info': 'centrally-system-info',
+                        'receipt': 'centrally-system-receipt'
+                    ]
+                    
+                    // 첫 빌드인 경우
+                    if (currentBuild.previousBuild == null) {
+                        echo "✅ 첫 빌드입니다. 모든 서비스를 빌드합니다."
+                        env.CHANGED_SERVICES = ALL_SERVICES_STRING
+                        env.BUILD_FRONTEND = 'true'
+                        return
+                    }
+                    
+                    def previousCommit = currentBuild.previousBuild?.changeSets ? 
+                        currentBuild.previousBuild.changeSets[0]?.items[0]?.commitId : 
+                        env.GIT_PREVIOUS_COMMIT
+                    
+                    def currentCommit = env.GIT_COMMIT
+                    
+                    if (previousCommit == null || previousCommit == currentCommit) {
+                        echo "------------------------------------------------------------"
+                        echo "⏭️ 이전 커밋 정보가 없거나 동일합니다. 모든 서비스를 빌드합니다."
+                        echo "------------------------------------------------------------"
+                        env.CHANGED_SERVICES = ALL_SERVICES_STRING
+                        env.BUILD_FRONTEND = 'true'
+                        return
+                    }
+                    
+                    // 변경된 파일 확인 (빈 문자열 필터링)
+                    def changesOutput = sh(
+                        script: "git diff --name-only ${previousCommit} ${currentCommit}",
+                        returnStdout: true
+                    ).trim()
+                    
+                    def changes = changesOutput ? changesOutput.split('\n').findAll { it.trim() } : []
+                    
+                    echo "------------------------------------------------------------"
+                    echo "📄 변경된 파일 목록 (${changes.size()}개):"
+                    if (changes.isEmpty()) {
+                        echo "  (변경된 파일 없음)"
+                    } else {
+                        changes.each { file ->
+                            def trimmedFile = file.trim()
+                            echo "  - ${trimmedFile}"
+                            
+                            // 서비스 매핑 (Map 기반)
+                            SERVICE_PREFIXES.each { serviceName, prefix ->
+                                if (trimmedFile.startsWith("${prefix}/")) {
+                                    changedServices << serviceName
+                                }
+                            }
+                            
+                            // 프론트엔드 및 코어 체크
+                            if (trimmedFile.startsWith('centrally-web-vue3-vite/')) {
+                                frontendChanged = true
+                            } else if (trimmedFile.startsWith('centrally-system-core/')) {
+                                coreChanged = true
+                            } else if (trimmedFile.startsWith('jenkinsfile/')) {
+                                coreChanged = true
+                            }
+                        }
+                    }
+                    echo "------------------------------------------------------------"
+                    
+                    // core 또는 jenkinsfile 변경 시 모든 서비스 빌드
+                    if (coreChanged) {
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        echo "✅ centrally-system-core 또는 jenkinsfile 변경 감지"
+                        echo "📦 빌드 대상: 모든 서비스"
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        env.CHANGED_SERVICES = ALL_SERVICES_STRING
+                        env.BUILD_FRONTEND = 'true'
+                    } else {
+                        changedServices = changedServices.unique()
+                        
+                        if (changedServices.isEmpty() && !frontendChanged) {
+                            echo "⏭️ 변경된 서비스가 없습니다. 빌드를 건너뜁니다."
+                            currentBuild.result = 'NOT_BUILT'
+                            error("No changes detected in any service")
+                        } else {
+                            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                            if (!changedServices.isEmpty()) {
+                                env.CHANGED_SERVICES = changedServices.join(',')
+                                echo "✅ 변경된 백엔드 서비스: ${changedServices.join(', ')}"
+                            }
+                            if (frontendChanged) {
+                                env.BUILD_FRONTEND = 'true'
+                                echo "✅ 프론트엔드 변경 감지"
+                            }
+                            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('환경 확인') {
+            steps {
+                echo "📋 빌드 환경 확인 중..."
+                sh '''
+                    echo "===== Java Version ====="
+                    java -version
+                    echo ""
+                    echo "===== Gradle Version ====="
+                    gradle -v
+                    echo ""
+                    echo "===== Node.js Version ====="
+                    node -v
+                    echo ""
+                    echo "===== npm Version ====="
+                    npm -v
+                    echo ""
+                    echo "===== Git Commit ====="
+                    echo "Current Commit: ${GIT_COMMIT}"
+                    echo ""
+                    echo "===== 빌드 환경 ====="
+                    echo "Environment: ${BUILD_ENV}"
+                    echo ""
+                    echo "===== 빌드 대상 서비스 ====="
+                    echo "Backend: ${CHANGED_SERVICES}"
+                    echo "Frontend: ${BUILD_FRONTEND}"
+                '''
+            }
+        }
+        
+        stage('CORE 빌드') {
+            steps {
+                script {
+                    if (env.CHANGED_SERVICES != null && env.CHANGED_SERVICES != '') {
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        echo "📦 centrally-system-core 우선 빌드"
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        
+                        dir('centrally-system-core') {
+                            sh '''
+                                chmod +x gradlew
+                                ./gradlew clean build -x test --no-daemon
+                                echo "✅ Core 빌드 완료 (Gradle 캐시에 저장됨)"
+                            '''
+                        }
+                        
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                    } else {
+                        echo "⏭️ 변경된 서비스가 없어 CORE 빌드를 건너뜁니다."
+                    }
+                }
+            }
+        }
+        
+        stage('프론트엔드 빌드') {
+            steps {
+                script {
+                    if (env.BUILD_FRONTEND == 'true') {
+                        buildFrontend()
+                    } else {
+                        echo "⏭️ 프론트엔드 변경이 없어 빌드를 건너뜁니다."
+                    }
+                }
+            }
+        }
+        
+        stage('서비스 빌드') {
+            steps {
+                script {
+                    def ALL_SERVICES = ['auth', 'hrm', 'gateway', 'info', 'receipt']
+                    def changedServicesList = []
+                    
+                    if (env.CHANGED_SERVICES != null && env.CHANGED_SERVICES != '') {
+                        changedServicesList = env.CHANGED_SERVICES.split(',').collect { it.trim() }
+                    }
+                    
+                    echo "🚀 변경된 서비스: ${changedServicesList.isEmpty() ? '없음' : changedServicesList.join(', ')}"
+                    echo "⚙️ t3.medium 최적화: 2개씩 순차적 병렬 빌드"
+                    
+                    // t3.medium 최적화: 2개씩 배치로 나누어 순차 실행
+                    def batchSize = 2
+                    def batches = ALL_SERVICES.collate(batchSize)
+                    
+                    batches.eachWithIndex { batch, batchIndex ->
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        echo "📦 배치 ${batchIndex + 1}/${batches.size()}: ${batch.join(', ')}"
+                        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                        
+                        def parallelStages = [:]
+                        batch.each { serviceName ->
+                            parallelStages["${serviceName.toUpperCase()} 빌드"] = {
+                                stage("${serviceName.toUpperCase()} 빌드") {
+                                    if (shouldBuildService(serviceName)) {
+                                        buildService(serviceName)
+                                    } else {
+                                        echo "⏭️ ${serviceName.toUpperCase()} 서비스 변경 없음 - 건너뜀"
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // 해당 배치 내에서는 병렬 실행
+                        parallel parallelStages
+                        
+                        // 배치 간 짧은 대기 (메모리 정리)
+                        if (batchIndex < batches.size() - 1) {
+                            echo "⏸️ 다음 배치 전 메모리 정리 대기 (5초)..."
+                            sleep 5
+                        }
+                    }
+                    
+                    echo "✅ 모든 배치 빌드 완료!"
+                }
+            }
+        }
+        
+        stage('백엔드 배포') {
+            steps {
+                script {
+                    if (env.CHANGED_SERVICES != null && env.CHANGED_SERVICES != '') {
+                        def services = env.CHANGED_SERVICES.split(',').collect { it.trim() }
+                        
+                        echo "------------------------------------------------------------"
+                        echo "📦 백엔드 배포 시작"
+                        echo "대상 서비스: ${services.join(', ')}"
+                        echo "⚡ 모든 서비스 병렬 배포"
+                        echo "------------------------------------------------------------"
+                        
+                        // 모든 서비스 병렬 배포
+                        def parallelDeploys = [:]
+                        services.each { serviceName ->
+                            parallelDeploys[serviceName] = {
+                                deployService(serviceName)
+                            }
+                        }
+                        
+                        // 병렬 실행
+                        parallel parallelDeploys
+                        
+                        echo "------------------------------------------------------------"
+                        echo "✅ 백엔드 배포 완료"
+                        echo "------------------------------------------------------------"
+                    } else {
+                        echo "⏭️ 변경된 서비스가 없어 백엔드 배포를 건너뜁니다."
+                    }
+                }
+            }
+        }
+        
+        stage('프론트엔드 배포') {
+            steps {
+                script {
+                    if (env.BUILD_FRONTEND == 'true') {
+                        echo "------------------------------------------------------------"
+                        echo "🎨 프론트엔드 배포 시작"
+                        echo "------------------------------------------------------------"
+                        
+                        try {
+                            // 1. dist.tar.gz 전송
+                            sh """
+                                scp -i ${SSH_KEY} -o StrictHostKeyChecking=no \
+                                    ${ARTIFACTS_BASE_DIR}/frontend/frontend-latest.tar.gz \
+                                    ${AP_SERVER}:/tmp/frontend-latest.tar.gz
+                            """
+                            
+                            // 2. 백업 및 압축 해제
+                            sh """
+                                ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ${AP_SERVER} '
+                                    # 기존 dist 백업
+                                    if [ -d ${AP_BASE_DIR}/dist ]; then
+                                        sudo mv ${AP_BASE_DIR}/dist ${AP_BASE_DIR}/dist.backup.\$(date +%Y%m%d-%H%M%S)
+                                    fi
+                                    
+                                    # 새 dist 디렉토리 생성
+                                    mkdir -p ${AP_BASE_DIR}/dist
+                                    
+                                    # dist 안의 콘텐츠만 dist 폴더에 압축 해제
+                                    tar -xzf /tmp/frontend-latest.tar.gz -C ${AP_BASE_DIR}/dist --strip-components=1
+                                    
+                                    # 임시 파일 삭제
+                                    rm /tmp/frontend-latest.tar.gz
+                                    
+                                    # Nginx 재로드
+                                    sudo systemctl reload nginx
+                                    
+                                    echo "✅ 프론트엔드 배포 완료"
+                                '
+                            """
+                            
+                            echo "✅ 프론트엔드 배포 완료"
+                            
+                        } catch (Exception e) {
+                            echo "❌ 프론트엔드 배포 실패: ${e.message}"
+                            currentBuild.result = 'FAILURE'
+                            error("프론트엔드 배포 실패")
+                        }
+                        
+                        echo "------------------------------------------------------------"
+                    } else {
+                        echo "⏭️ 프론트엔드 변경이 없어 배포를 건너뜁니다."
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            script {
+                def services = env.CHANGED_SERVICES?.split(',')?.collect { it.trim() }?.join(', ') ?: '없음'
+                def frontend = env.BUILD_FRONTEND == 'true' ? 'Vue Frontend' : '없음'
+                echo "✅ 빌드 및 배포 성공!"
+                echo "📦 배포된 백엔드: ${services}"
+                echo "🎨 배포된 프론트엔드: ${frontend}"
+            }
+        }
+        failure {
+            echo "❌ 빌드 또는 배포 실패!"
+        }
+        always {
+            echo "🧹 워크스페이스 정리 중..."
+            cleanWs(
+                deleteDirs: true,
+                patterns: [
+                    [pattern: '**/build/', type: 'INCLUDE'],
+                    [pattern: '**/node_modules/', type: 'INCLUDE']
+                ]
+            )
+        }
+    }
+}
+
+/**
+ * 서비스 빌드 여부 확인 함수
+ */
+def shouldBuildService(String serviceName) {
+    if (env.CHANGED_SERVICES == null || env.CHANGED_SERVICES == '') {
+        return false
+    }
+    def services = env.CHANGED_SERVICES.split(',').collect { it.trim() }
+    return services.contains(serviceName)
+}
+
+/**
+ * 서비스 배포 함수 (공통)
+ */
+def deployService(String serviceName) {
+    try {
+        echo "🚀 ${serviceName} 배포 중..."
+        
+        // 1. JAR 파일 전송
+        sh """
+            scp -i ${SSH_KEY} -o StrictHostKeyChecking=no \
+                ${ARTIFACTS_BASE_DIR}/${serviceName}/${serviceName}-latest.jar \
+                ${AP_SERVER}:${AP_BASE_DIR}/${serviceName}.jar
+        """
+        
+        // 2. 재시작 스크립트 실행
+        sh """
+            ssh -i ${SSH_KEY} -o StrictHostKeyChecking=no ${AP_SERVER} \
+                'bash ${AP_BASE_DIR}/deploy-service.sh ${serviceName}'
+        """
+        
+        echo "✅ ${serviceName} 배포 완료"
+        
+    } catch (Exception e) {
+        echo "❌ ${serviceName} 배포 실패: ${e.message}"
+        currentBuild.result = 'FAILURE'
+        error("${serviceName} 배포 실패")
+    }
+}
+
+/**
+ * 개별 서비스 빌드 함수
+ */
+def buildService(String serviceName) {
+    def serviceDir = "centrally-system-${serviceName}"
+    def artifactDir = "${ARTIFACTS_BASE_DIR}/${serviceName}"
+    def buildTimestamp = new Date().format('yyyyMMdd-HHmmss')
+    
+    try {
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "🔨 ${serviceName.toUpperCase()} 서비스 빌드 시작"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        
+        // 빌드 준비
+        dir(serviceDir) {
+            echo "🧹 이전 빌드 정리 중..."
+            sh '''
+                chmod +x gradlew
+                ./gradlew clean
+            '''
+        }
+        
+        // 빌드
+        dir(serviceDir) {
+            echo "🔨 빌드 시작..."
+            sh '''
+                chmod +x gradlew
+                # t3.medium 최적화: 메모리 제한
+                export GRADLE_OPTS="-Xmx768m -Xms256m -XX:MaxMetaspaceSize=384m -XX:+UseG1GC"
+                ./gradlew build -x test --no-daemon --stacktrace
+                echo ""
+                echo "===== 빌드 결과물 확인 ====="
+                ls -lh build/libs/
+            '''
+        }
+        
+        // 테스트
+        dir(serviceDir) {
+            echo "🧪 단위 테스트 실행 중..."
+            sh '''
+                chmod +x gradlew
+                # 테스트용 메모리 제한
+                export GRADLE_OPTS="-Xmx512m -Xms256m -XX:MaxMetaspaceSize=256m"
+                ./gradlew test --no-daemon
+            '''
+            
+            // JUnit 테스트 결과 수집
+            junit allowEmptyResults: true, testResults: "build/test-results/test/*.xml"
+        }
+        
+        // 아티팩트 저장
+        dir(serviceDir) {
+            echo "📦 빌드 결과물 저장 중..."
+            sh """
+                mkdir -p ${artifactDir}
+                
+                # JAR 파일명 확인 (plain 제외)
+                JAR_FILE=\$(ls build/libs/*.jar | grep -v plain | head -1)
+                JAR_NAME=\$(basename \$JAR_FILE)
+                
+                # 빌드 번호와 타임스탬프 포함하여 복사
+                cp \$JAR_FILE ${artifactDir}/${serviceName}-build-${BUILD_NUMBER}-${buildTimestamp}.jar
+                
+                # 최신 버전 심볼릭 링크
+                ln -sf ${artifactDir}/${serviceName}-build-${BUILD_NUMBER}-${buildTimestamp}.jar \
+                       ${artifactDir}/${serviceName}-latest.jar
+                
+                # 빌드 정보 저장
+                echo "BUILD_NUMBER: ${BUILD_NUMBER}" > ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "GIT_COMMIT: ${GIT_COMMIT}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "BUILD_TIMESTAMP: ${buildTimestamp}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "JAR_NAME: \$JAR_NAME" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "SERVICE: ${serviceName}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "BUILD_URL: ${BUILD_URL}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                
+                echo ""
+                echo "✅ 저장된 아티팩트:"
+                ls -lh ${artifactDir}/ | tail -5
+            """
+        }
+        
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "✅ ${serviceName.toUpperCase()} 서비스 빌드 성공!"
+        echo "📁 아티팩트 위치: ${artifactDir}"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        
+    } catch (Exception e) {
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "❌ ${serviceName.toUpperCase()} 서비스 빌드 실패!"
+        echo "에러: ${e.message}"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        throw e
+    }
+}
+
+/**
+ * 프론트엔드 빌드 함수
+ */
+def buildFrontend() {
+    def frontendDir = 'centrally-web-vue3-vite'
+    def artifactDir = "${ARTIFACTS_BASE_DIR}/frontend"
+    def buildTimestamp = new Date().format('yyyyMMdd-HHmmss')
+    
+    try {
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "🎨 Vue 프론트엔드 빌드 시작"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        
+        dir(frontendDir) {
+            echo "📦 의존성 설치 중..."
+            sh '''
+                # node_modules와 package-lock.json 정리 (rollup 버그 회피)
+                rm -rf node_modules package-lock.json
+                
+                # npm install로 재설치 (npm ci 대신)
+                npm install --prefer-offline --no-audit
+            '''
+            
+            echo "🔨 프로덕션 빌드 시작 (.env.${BUILD_ENV} 사용)..."
+            sh """
+                # BUILD_ENV 환경 변수에 따라 .env.prod 또는 .env.dev 사용
+                echo "빌드 모드: ${BUILD_ENV}"
+                npm run build -- --mode ${BUILD_ENV}
+                
+                echo ""
+                echo "===== 빌드 결과물 확인 ====="
+                ls -lh dist/
+                du -sh dist/
+            """
+            
+            echo "📦 빌드 결과물 저장 중..."
+            sh """
+                mkdir -p ${artifactDir}
+                
+                # dist 디렉토리를 tar.gz로 압축
+                tar -czf ${artifactDir}/frontend-build-${BUILD_NUMBER}-${buildTimestamp}.tar.gz dist/
+                
+                # 최신 버전 심볼릭 링크
+                ln -sf ${artifactDir}/frontend-build-${BUILD_NUMBER}-${buildTimestamp}.tar.gz \
+                       ${artifactDir}/frontend-latest.tar.gz
+                
+                # 빌드 정보 저장
+                echo "BUILD_NUMBER: ${BUILD_NUMBER}" > ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "GIT_COMMIT: ${GIT_COMMIT}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "BUILD_TIMESTAMP: ${buildTimestamp}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "BUILD_MODE: ${BUILD_ENV}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "ENV_FILE: .env.${BUILD_ENV}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                echo "BUILD_URL: ${BUILD_URL}" >> ${artifactDir}/build-info-${BUILD_NUMBER}.txt
+                
+                echo ""
+                echo "✅ 저장된 아티팩트:"
+                ls -lh ${artifactDir}/ | tail -5
+            """
+        }
+        
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "✅ Vue 프론트엔드 빌드 성공!"
+        echo "📁 아티팩트 위치: ${artifactDir}"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        
+    } catch (Exception e) {
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "❌ Vue 프론트엔드 빌드 실패!"
+        echo "에러: ${e.message}"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        throw e
+    }
+}
+

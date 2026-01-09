@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════════════════════
+ * Centrally System - Global Styles Entry Point
+ * ═══════════════════════════════════════════════════════════════
+ * 모든 스타일 파일을 통합하는 단일 진입점
+ * main.js에서 이 파일 하나만 import하면 됩니다.
+ */
+
+/* ==========================================
+ * 1. Base Styles (기본 공통 스타일)
+ * ========================================== */
+@import './base/common.css';
+/* @import './base/font.css'; */ /* 필요시 주석 해제 */
+
+/* ==========================================
+ * 2. Theme System (테마 시스템)
+ * ========================================== */
+@import './theme/index.css';
+
+/* ==========================================
+ * 3. Components (공통 컴포넌트)
+ * ========================================== */
+@import './components/pagination.css';
+@import './components/tooltip.css';
+@import './components/toast.css';
+@import './components/modal/preview-modal.css';
+@import './components/mobile-card.css';
+
+/* ==========================================
+ * 4. Layouts (카드 레이아웃)
+ * ========================================== */
+@import './layouts/card-main.css';
+@import './layouts/card-notice.css';
+@import './layouts/card-default.css';
+@import './layouts/card-ticket.css';
+@import './layouts/card-schedule.css';
+
+/* ==========================================
+ * 5. Pages (페이지별 스타일)
+ * ========================================== */
+@import './pages/hrm-notice.css';
+@import './pages/favorite-menu.css';
+@import './pages/cart.css';
+

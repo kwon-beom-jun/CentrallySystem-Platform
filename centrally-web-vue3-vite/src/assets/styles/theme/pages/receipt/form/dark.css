@@ -1,0 +1,161 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 영수증 등록/수정 다크모드 오버라이드 (Receipt Form Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .list-group {
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .list-group-item {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .list-group-item:hover {
+  background: var(--theme-bg-tertiary) !important;
+}
+
+body[data-theme="dark"] .list-no-group .list-group-item {
+  background: var(--theme-bg-tertiary) !important;
+}
+
+/* 결재/합의 버튼 - 밝은 모드 색상 유지 */
+body[data-theme="dark"] .approval-option {
+  background: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+/* 다크모드에서도 결재(빨강), 합의(초록) 색상 유지 */
+body[data-theme="dark"] .approval-decision.active {
+  color: #ff0019 !important;
+  background: #dc35466c !important;
+  border-color: #dc3546 !important;
+  font-weight: 700;
+}
+
+body[data-theme="dark"] .approval-concurrence.active {
+  color: #00914d !important;
+  background: #19875469 !important;
+  border-color: #198754 !important;
+  font-weight: 700;
+}
+
+body[data-theme="dark"] .approval-option.disabled {
+  opacity: 0.4;
+}
+
+/* 외부 참여자 영역 */
+body[data-theme="dark"] .external-section {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .external-section.cs-card--blue {
+  background: #1e3a5f !important;
+  border-color: #2a4a70 !important;
+}
+
+body[data-theme="dark"] .external-participant-form,
+body[data-theme="dark"] .participant-form {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+/* 대리결재자 지정 영역 */
+body[data-theme="dark"] .delegate-assign-card {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .delegate-assign-card__header {
+  color: #d3d3d3 !important;
+}
+
+body[data-theme="dark"] .delegate-assign-card__header i {
+  color: #d3d3d3 !important;
+}
+
+body[data-theme="dark"] .delegate-assign-card__header span {
+  color: #d3d3d3 !important;
+}
+
+body[data-theme="dark"] .delegate-assign-card__body {
+  background: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .delegate-hint {
+  background: var(--theme-bg-tertiary) !important;
+  color: #d3d3d3 !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .delegate-hint i {
+  color: #d3d3d3 !important;
+}
+
+body[data-theme="dark"] .selected-chip {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .delegate-candidate {
+  color: #f87171 !important;
+}
+
+/* 승인율 영역 */
+body[data-theme="dark"] .rate-box-desktop {
+  background: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .rate-box-desktop .rate-label {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .rate-box-desktop .rate-label .hint {
+  color: var(--theme-text-muted) !important;
+}
+
+body[data-theme="dark"] .rate-bar .pct-rail {
+  background: var(--theme-bg-main) !important;
+}
+
+body[data-theme="dark"] .rate-bar .pct-fill {
+  background: var(--theme-btn-primary-bg) !important;
+}
+
+body[data-theme="dark"] .rate-value {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .history-summary {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .history-summary strong {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .history-summary .pending {
+  color: #fb923c !important;
+}
+
+/* 영수증 결재선, 참여자 리스트 */
+body[data-theme="dark"] .approver-line-list,
+body[data-theme="dark"] .approver-line-item,
+body[data-theme="dark"] .participant-line-list,
+body[data-theme="dark"] .participant-line-item,
+body[data-theme="dark"] .external-participant-item {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .line-item-name,
+body[data-theme="dark"] .line-item-position {
+  color: var(--theme-text-primary) !important;
+}
+

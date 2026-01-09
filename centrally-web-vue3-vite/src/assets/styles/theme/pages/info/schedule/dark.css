@@ -1,0 +1,165 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 일정 캘린더 페이지 다크모드 오버라이드 (Schedule Calendar Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .calendar-navigation {
+  background-color: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .nav-btn {
+  border-color: var(--theme-border) !important;
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .nav-btn:hover {
+  background-color: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border-dark) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .nav-btn:active {
+  background-color: var(--theme-bg-tertiary) !important;
+}
+
+body[data-theme="dark"] .month-year {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .calendar-controls {
+  background-color: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .view-toggle-btn {
+  border-color: var(--theme-border) !important;
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .view-toggle-btn:hover {
+  background-color: var(--theme-bg-tertiary) !important;
+  border-color: var(--theme-border-dark) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .view-toggle-btn.active {
+  background-color: var(--theme-primary) !important;
+  border-color: var(--theme-primary) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .view-toggle-btn.active:hover {
+  background-color: var(--theme-primary-dark) !important;
+  border-color: var(--theme-primary-dark) !important;
+}
+
+body[data-theme="dark"] .calendar-container {
+  border-color: var(--theme-border) !important;
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+/* Toast UI Calendar 캘린더 헤더(요일) 다크모드 */
+body[data-theme="dark"] .calendar-container .toastui-calendar-day-names {
+  background-color: var(--theme-bg-secondary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-day-name-item {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-template-monthDayName {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-day-name-item span {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-holiday-sun,
+body[data-theme="dark"] .calendar-container .toastui-calendar-holiday-sat {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-holiday-sun .toastui-calendar-template-monthDayName,
+body[data-theme="dark"] .calendar-container .toastui-calendar-holiday-sat .toastui-calendar-template-monthDayName {
+  color: var(--theme-text-secondary) !important;
+}
+
+/* Toast UI Calendar 캘린더 내부 배경 다크모드 */
+body[data-theme="dark"] .calendar-container .toastui-calendar-daygrid-cell {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-daygrid-date,
+body[data-theme="dark"] .calendar-container .toastui-calendar-daygrid-date-number {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .calendar-container .toastui-calendar-month-daygrid-date,
+body[data-theme="dark"] .calendar-container .toastui-calendar-month-daygrid-date-number {
+  color: var(--theme-text-primary) !important;
+}
+
+/* Toast UI Calendar 상세 팝업 다크모드 */
+body[data-theme="dark"] .toastui-calendar-detail-container,
+body[data-theme="dark"] .toastui-calendar-popup-container {
+  background-color: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-detail-container *,
+body[data-theme="dark"] .toastui-calendar-popup-container * {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-popup-section {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-event-title,
+body[data-theme="dark"] .toastui-calendar-template-popupDetailTitle {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-template-popupDetailDate {
+  color: var(--theme-text-secondary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-detail-item,
+body[data-theme="dark"] .toastui-calendar-detail-item-indent {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-content {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-template-popupDetailAttendees,
+body[data-theme="dark"] .toastui-calendar-template-popupDetailState,
+body[data-theme="dark"] .toastui-calendar-template-popupDetailBody {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-popup-section-button button {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-edit-button,
+body[data-theme="dark"] .toastui-calendar-delete-button {
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .toastui-calendar-template-popupEdit,
+body[data-theme="dark"] .toastui-calendar-template-popupDelete {
+  color: var(--theme-text-primary) !important;
+}
+
+/* 일정 유형과 설명 사이에 실선 추가 (기본값, JavaScript에서 동적으로 제어) */
+body[data-theme="dark"] .toastui-calendar-detail-item:has(.toastui-calendar-ic-state-b) {
+  border-bottom-color: var(--theme-border) !important;
+}
+

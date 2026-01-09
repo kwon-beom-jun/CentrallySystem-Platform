@@ -1,0 +1,34 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 부서/팀 관리 다크모드 오버라이드 (Department Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .accordion-item {
+  background: var(--theme-bg-secondary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .accordion-button {
+  background: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .accordion-button:not(.collapsed) {
+  background: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+body[data-theme="dark"] .accordion-body {
+  background: var(--theme-bg-main) !important;
+}
+
+body[data-theme="dark"] .department-list .list-group {
+  background: var(--theme-bg-main) !important;
+}
+
+body[data-theme="dark"] .department-list .list-group-item {
+  background: var(--theme-bg-secondary) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border) !important;
+}
+

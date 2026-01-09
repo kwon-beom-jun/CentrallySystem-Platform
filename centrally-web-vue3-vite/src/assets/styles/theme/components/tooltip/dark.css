@@ -1,0 +1,20 @@
+/* ═══════════════════════════════════════════════════════════════
+ * 툴팁 다크모드 오버라이드 (Tooltip Dark Mode)
+ * ═══════════════════════════════════════════════════════════════ */
+
+body[data-theme="dark"] .v-popper__popper,
+body[data-theme="dark"] .tooltip,
+body[data-theme="dark"] .v-popper__inner {
+  background: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-primary) !important;
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .v-popper__arrow-outer {
+  border-color: var(--theme-border) !important;
+}
+
+body[data-theme="dark"] .v-popper__arrow-inner {
+  border-color: var(--theme-bg-tertiary) !important;
+}
+
